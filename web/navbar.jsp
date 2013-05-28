@@ -8,9 +8,9 @@
                 <li<%if(session.getAttribute("page").equals("home")){
                     %> class="active"<%
                 }%>><a href="try.jsp?pag=home">Home</a></li>
-                <li<%if(session.getAttribute("page").equals("articoli")){
+                <li<%if(session.getAttribute("page").equals("showPages")){
                     %> class="active"<%
-                }%>><a href="try.jsp?pag=articoli">Articoli</a></li>
+                }%>><a href="try.jsp?pag=showPages">Articoli</a></li>
                 <%
                 try{
                     if(session.getAttribute("level").equals(10)){
@@ -28,7 +28,7 @@
                     %>
                     <li id="register"><a href="try.jsp?pag=register">Register</a></li>
                     <li id="login"><a href="#myModal" role="button" data-toggle="modal">Login</a></li>
-                    <li id="user" class="hidden"><a href="#" id="userN"></a></li>
+                    <li id="user" class="hidden"><a href="try.jsp?pag=profile" id="userN"></a></li>
                     <li id="logout" class="hidden" onclick="logout();"><a href="#">Logout</a></li>
                     <%
                 }else{
@@ -37,14 +37,14 @@
                     %>
                     <li id="register" class="hidden"><a href="try.jsp?pag=register">Register</a></li>
                     <li id="login" class="hidden"><a href="#myModal" role="button" data-toggle="modal">Login</a></li>
-                    <li id="user"><a href="#"><%=nome%></a></li>
+                    <li id="user"><a href="try.jsp?pag=profile" id="userN"><%=nome%></a></li>
                     <li id="logout" onclick="logout();"><a href="#">Logout</a></li>
                     <%
                 }
                 %>
                 <form class="navbar-form form-search pull-right" name="cerca" accept-charset="UTF-8">
                     <div class="input-append">
-                        <input class="span3 search-query" type="text"  id="search" data-provide="typeahead" data-items="4" autocomplete="off" name="cerc" /> 
+                        <input class="span3 search-query" type="text" id="search" data-provide="typeahead" data-items="4" autocomplete="off" name="cerc" /> 
                         <button class="btn btn-success" type="button" name="bottone" onclick="avvio(10);"><i class="icon-search"></i></button>
                     </div>
                 </form>

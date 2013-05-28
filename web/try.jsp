@@ -26,7 +26,6 @@ session.setAttribute("level",10);
                     <div class="page-header">
                         <h1><%=pagina%></h1>
                     </div>
-                    <h2 id="headings">Headings</h2>
                     <div>
                         <div id="lista">
                             <%
