@@ -27,7 +27,11 @@ function navLogin(){
             document.getElementById("logout").className = "";
             document.getElementById("userN").innerHTML = stringa;
         }else{
-            //document.getElementById("loginError").className = "";
+            document.getElementById("loginError").className = "alert alert-error";
         }
     }
+}
+
+function closePopError(){
+    document.getElementById("loginError").className = "alert alert-error hidden";
 }

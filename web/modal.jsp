@@ -27,7 +27,7 @@
             </div>
         </form>
         <div class="alert alert-error hidden" id="loginError">
-            <button class="close" data-dismiss="alert" type="button">×</button>
+            <button class="close" type="button" onclick="closePopError();">×</button>
             <strong>Oh snap!</strong>
             Change a few things up and try submitting again.
         </div>
