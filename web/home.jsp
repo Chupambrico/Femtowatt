@@ -1,1 +1,5 @@
-<a href="try.jsp?pag=showPages">Articoli</a>
+   
+     <script language="javascript">
+       
+        window.onload = anteprima();
+        </script>
