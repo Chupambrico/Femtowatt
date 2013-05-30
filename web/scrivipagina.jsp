@@ -1,168 +1,142 @@
-<%@page import="java.util.*" import="java.net.*" import="java.sql.*" import="database.CreaConnessione" import="database.Login" import="database.Query" contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="connect.jsp" %>
-<div id="sample">
+<%@page import="java.sql.*" import="database.CreaConnessione" import="database.Login" import="database.Query" contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="connect.jsp"%>
 <script type="text/javascript" src="js/nicEdit.js"></script>
+
 <script type="text/javascript">
-    bkLib.onDomLoaded(function(){nicEditors.allTextAreas()});
+    bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 </script>
+
+ <script language="javascript">
+     var errTitolo="1";
+     var titolo="";
+     
+      function preview(){
+          
+     
+    
+   
+       var stringa = nicEditors.findEditor('area2').getContent();
+         
+       
+       document.getElementById("preview2").innerHTML=stringa;
+       
+    }
+    
+    function titolo1(){
+        
+        var stringa = document.scrivi.titolo.value;
+       
+        var regexp =/^[a-zA-Z0-9\s]+$/;
+
+        if (regexp.test(stringa) == false){
+            document.getElementById("ak1").className="control-group error";
+            $('#titoloEs').popover('show');
+            setTimeout(function() {$('#titoloEs').popover('hide');},3000);
+            errTitolo="1";
+        }else{
+            titolo=stringa;
+            document.getElementById("ak1").className="control-group success";
+            errTitolo="0";
+        }
+    }
+       
+    
+function GetXmlHttpObject(){
+    if (window.XMLHttpRequest){
+        return new XMLHttpRequest();
+    }
+    if (window.ActiveXObject){
+        return new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    return null;
+}
+
+  function testout(){
+     
+    if (xmlhttp.readyState==4){
+        var stringa= xmlhttp.responseText.trim();
+        var Re = new RegExp("%0D%0A","g");
+        stringa = stringa.replace(Re,"");
+        
+        if(stringa=="1" || stringa=="2"){
+          
+            document.getElementById("errore").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Testo inferiore ai 100 caratteri!</h4></div>"
+        }else{
+                document.getElementById("errore").innerHTML=""
+                document.getElementById("errore").innerHTML="<div class='alert alert-success'><h4><b>Grazie!</b> Testo Inserito correttamente!</h4></div>"
+                setTimeout(function(){ location.href = "try.jsp"; },5000);
+        }
+        
+    }
+     
+        
+    }
+
+
+function testo1(){
+
+
+    
+
+    var stringa = nicEditors.findEditor('area2').getContent();
+    
+    xmlhttp=GetXmlHttpObject();
+    if (xmlhttp==null){
+        alert ("Your browser does not support Ajax HTTP");
+        return;
+    }
+    
+    var url="insertPage.jsp?";
+    url=url+"titolo="+titolo+"&testo="+stringa;
+    xmlhttp.onreadystatechange=testout;
+    
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send(null);
+   
+ }
+
+</script>
+
 <%
 /*if(request.isRequestedSessionIdValid()){
     response.sendError(response.SC_UNAUTHORIZED,"Devi fare il login");
 }else{out.print("Domani");}*/
 
-String titolo = request.getParameter("titolo");   
-String nome = (String)session.getAttribute("nome");
-Integer nomeN = 0;
-rs = q.esecuzioneQuery("SELECT * FROM \"UTENTE\" WHERE \"USERNAME\" = '" + nome + "'");
-while (rs.next()){
-    nomeN = rs.getInt("ID");
-}
-String testo = request.getParameter("testo");
 
-String invia = request.getParameter("invia");
-String preview = request.getParameter("preview");
-String errore = "";
-
-if(preview != null){
-    out.print(testo);
-    %>
-    <form method="post" action="<%=request.getRequestURI() + "?" + request.getQueryString()%>">
-        <table border="0" >
-            <tr>
-                <td >Titolo:</td>
-                <td><input type="text" name="titolo" style="width:150px;"/></td>
-            </tr>
-            <tr>
-                <td>Testo:</td>
-                <td><textarea id="area2" type="text" cols="80" rows="20" name="testo" ><%=testo%></textarea></td>
-            </tr>
-        </table>
-        <input  type="submit" name="invia" value="Invia!"/>
-        <input  type="submit" name="preview" value="Preview"/>
-    </form>
-    </div>
-    <%
-}else{
-    if(invia != null){
-        out.print("<table border='0'>");
-        out.print("<form method='post' action='" + request.getRequestURI() + "?" + request.getQueryString() + "' >  ");             
-
-        if((titolo == null) || (titolo.equals(""))){
-            errore = "1";
-            out.print("<tr><td >Titolo:</td><td><input type='text' name='titolo' style='width:150px;background:red;'/><font color='red'>Manca il titolo</font></td></tr>") ;  
-        }else{
-            out.print("<tr><td >Titolo:</td><td><input type='text' name='titolo' style='width:150px;'value='" + titolo + "'/></td></tr>") ;  
-        }
-        String testo2 = testo;
-
-        testo2 = testo2.replaceAll("\\<.*?\\>","");       
-        testo2 = testo2.replaceAll("nbsp","");
-        testo2 = testo2.replaceAll("&","");
-        testo2 = testo2.replaceAll(";","");
-        testo2 = testo2.replaceAll(" ","");
-        testo2 = URLDecoder.decode(testo2);
-        testo2 = URLEncoder.encode(testo2);
-        testo2 = testo2.replaceAll("\\<.*?\\>","");       
-        testo2 = testo2.replaceAll("%0D%0A","");
-        Integer ltesto2 = testo2.length();
-
-        if((testo2 == null) || (testo2.equals("")) ){ 
-            errore = "1";
-            out.print("<tr><tr><td>Testo:</td><td><textarea id='area2' type='text' cols='80' rows='20' name='testo' ></textarea><font color='red'>Testo mancante</font></td></tr></td></tr>") ;  
-        }else{
-            if(ltesto2 < 100){
-                errore = "1";
-                out.print("<tr><tr><td>Testo:</td><td><textarea  id='area2' type='text' cols='80' rows='20' name='testo' >" + testo + "</textarea><font color='red'>Il testo deve essere min 100 caretteri</font></td></tr></td></tr>") ;  
-            }else{
-                //out.print("<tr><td>Testo:</td><td><textarea id='area2' type='text' cols='80' rows='20'   name='testo' > "+testo+"</textarea></td></tr>") ;  
-            }  
-        }
-        out.print("</table>");
         %>
-        <input  type="submit" name="invia" value="Invia!"/>
-        <input  type="submit" name="preview" value="Preview"/>
-        </form>
-        </div>
-        <%
-        if(errore.equals("")){            
-            testo = testo.replaceAll("'","''");  
-
-            Calendar calendar = new GregorianCalendar(); 
-            String anno = Integer.toString(calendar.get(calendar.YEAR));
-            String mese = Integer.toString(calendar.get(calendar.MONTH)+1);
-            String giorno = Integer.toString(calendar.get(calendar.DAY_OF_MONTH));
-            String ora = Integer.toString(calendar.get(calendar.HOUR_OF_DAY));
-            String minuti = Integer.toString(calendar.get(calendar.MINUTE));
-            String secondi = Integer.toString(calendar.get(calendar.SECOND));
-            String data = mese + "/" + giorno + "/" + anno;
-            String orario = ora + ":" + minuti + ":" + secondi;
-
-            int i = 0;
-
-            Integer ltesto = testo.length();
-
-            if(ltesto > 10000){
-                if((testo.length() % 10000) == 0){    
-                    i = testo.length() / 10000;
-                }else{   
-                    i = (int)(testo.length() / 10000) + 1;
-                }
-
-                String ptesto = "";
-
-                int punt = 0;
-
-                ptesto = testo.substring(punt, punt + 10000);
-
-                punt += 10000;
-
-                q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\") VALUES "
-                    + "('" + titolo + "','" + data + "' ,'" + orario + "','ciao','" + ptesto + "','" + nomeN + "')");
-                rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\" WHERE \"TITOLO\"='" + titolo + "'");
-
-                Integer id = 0;          
-                while(rs.next()){
-                    id = rs.getInt("ID");
-                }
-
-                for(int a = 0; a <= (i - 2); a++){
-                    if(a == (i - 2)){
-                        ptesto = testo.substring(punt, testo.length());
-                        q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\",\"PAGINALEGATA\",\"NPAGINA\") VALUES "
-                            + "('" + titolo + "','" + data + "' ,'" + orario + "','ciao','" + ptesto + "','" + nomeN + "','" + id + "','" + a + "')");
-                    }else{
-                        ptesto=testo.substring(punt, punt+10000);
-                        q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\",\"PAGINALEGATA\",\"NPAGINA\") VALUES "
-                            + "('" + titolo + "','" + data + "' ,'" + orario + "','ciao','" + ptesto + "','" + nomeN + "','" + id + "','" + a + "')");
-                    }  
-                    punt += 10000;             
-                }
-            }else{
-                q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\") VALUES "
-                    + "('" + titolo + "','" + data + "' ,'" + orario + "','ciao','" + testo + "','" + nomeN + "')");                                                 
-            }
-            response.sendRedirect("page.jsp?pag=messaggi&mess=Testo1Inserito");
-        }
-    }else{
-        %>
-        <form method="post" action="<%=request.getRequestURI() + "?" + request.getQueryString()%>">            
-            <table border="0">
+       <div id="preview2"></div>
+        <div id="inserito">
+        <form name="scrivi" width="100%" >            
+            <table border="0" width="100%" >
                 <tr>
-                    <td >Titolo:</td>
+                  
                     <td>
-                        <input type="text" name="titolo" style="width:150px;"/>
+                        <div id="ak1" class="control-group ">
+                            <label class="control-label"></label>
+                            <div class="controls">
+                                <div id="titoloEs" data-animation="true" data-title="Errore!" data-content="Numeri o caratteri speciali non ammessi.">
+                                    <input type="text" name="titolo"  onChange="titolo1();"  placeholder="Titolo" class="input-xlarge">
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 <tr>
-                    <td>Testo:</td>
+                    
                     <td>
-                        <textarea id="area2" type="text" cols="80" rows="20" name="testo"></textarea>
-                    </td>
+                        
+                        
+                                <div id="testoEs" data-animation="true" data-title="Errore!" data-content="Testo mancante o minore di 100 caratteri.">   
+                        <textarea   style="width: 100%;" id="area2" type="text" cols="100" rows="20" name="testo"></textarea>
+                         </div>
+                   
+                           
+                       
+                   </td>
                 </tr>
             </table>
-            <input type="submit" name="invia" value="Invia!"/>
-            <input type="submit" name="preview" value="Preview"/>
+            <input class="btn btn-success"  type="button" onclick="testo1();" value="Invia!"/>
+           <input type="button" class="btn btn-warning" value="Preview" onclick="preview();"  >
+            
         </form>
-        </div>
-    <%}
-}%>
+       </div>
