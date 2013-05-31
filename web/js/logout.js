@@ -17,10 +17,10 @@ function navLogout(){
         stringa = stringa.replace(Re,"");
         if(stringa != ""){
             document.getElementById("userN").innerHTML = "";
-            document.getElementById("register").className = "";
-            document.getElementById("login").className = "";
-            document.getElementById("user").className = "hidden";
-            document.getElementById("logout").className = "hidden";
+            document.getElementById("register").style.display = "block";
+            document.getElementById("login").style.display = "block";
+            document.getElementById("user").style.display = "none";
+            document.getElementById("logout").style.display = "none";
         }
     }
 }

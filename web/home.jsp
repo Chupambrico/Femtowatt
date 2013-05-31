@@ -1,5 +1,3 @@
-   
-     <script language="javascript">
-       
-        window.onload = anteprima();
-        </script>
+<script language="javascript">
+    window.onload = anteprima();
+</script>

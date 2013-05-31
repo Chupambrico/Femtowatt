@@ -21,10 +21,10 @@ function navLogin(){
         stringa = stringa.replace(Re,"");
         if(stringa != ""){
             $('#myModal').modal('hide')
-            document.getElementById("register").className = "hidden";
-            document.getElementById("login").className = "hidden";
-            document.getElementById("user").className = "";
-            document.getElementById("logout").className = "";
+            document.getElementById("register").style.display = "none";
+            document.getElementById("login").style.display = "none";
+            document.getElementById("user").style.display = "block";
+            document.getElementById("logout").style.display = "block";
             document.getElementById("userN").innerHTML = stringa;
         }else{
             document.getElementById("loginError").className = "alert alert-error";

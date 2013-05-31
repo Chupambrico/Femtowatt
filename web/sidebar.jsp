@@ -5,13 +5,16 @@
             <li class="active">
                 <a href="#">Home</a>
             </li>
-            <li>
-                <a href="#">Library</a>
-            </li>
-            <li>
-                <a href="#">Applications</a>
-            </li>
-            <li class="nav-header">Another list header</li>
+            <%  
+            if(session.getAttribute("idSession") != null){
+                %>
+                <li>
+                    <a href="try.jsp?pag=scrivipagina">Scrivi nuovo articolo</a>
+                </li>
+                <%
+            }
+            %>
+            <li class="nav-header">Profile settings</li>
             <li>
                 <a href="#">Profile</a>
             </li>
