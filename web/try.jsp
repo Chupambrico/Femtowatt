@@ -6,32 +6,7 @@ if(pagina == null){
 }
 session.setAttribute("page",pagina);
 session.setAttribute("level",10);
-
-String visualPagina="";
-
-String[] codPag = new String[10];
-codPag[0]="home";
-codPag[1]="scrivipagina";
-codPag[2]="viewPage";
-codPag[3]="showPages";
-codPag[4]="administrator";
-codPag[5]="register";
-
-
-String[] realPag = new String[10];
-
-realPag[0]="Home";
-realPag[1]="Scrivi il tuo articolo";
-realPag[2]="";
-realPag[3]="Articoli";
-realPag[4]="Amministrazione";
-realPag[5]="Registrazione";
-
-for(int i=0;i<realPag.length;i++){
-   if(pagina.equals(codPag[i])){
-       visualPagina=realPag[i];
-   }
-}
+String visualPagina = pagina;
 %>
 <html>
     <head>
@@ -45,6 +20,7 @@ for(int i=0;i<realPag.length;i++){
         <script src="js/logout.js"></script>
         <script src="js/home.js"></script>
         <title>JSP Page</title>
+        <%@include file="titles.jsp"%>
     </head>
     <body onload="lista();">
         <%@include file="navbar.jsp"%>
@@ -56,7 +32,7 @@ for(int i=0;i<realPag.length;i++){
                 </div>
                 <div class="span9"  style="padding-top: 40px; word-wrap: break-word;">
                     <div class="page-header">
-                        <h1><%=visualPagina%></h1>
+                        <h1 id="title"><%=visualPagina%></h1>
                     </div>
                     <div>
                         <div id="lista">

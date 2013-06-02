@@ -2,22 +2,29 @@
     <div class="well" style="padding: 8px 0;">
         <ul class="nav nav-list">
             <li class="nav-header">List header</li>
-            <li class="active">
-                <a href="#">Home</a>
-            </li>
             <%  
             if(session.getAttribute("idSession") != null){
                 %>
-                <li>
+                <li<%if(session.getAttribute("page").equals("scrivipagina")){
+                    %> class="active"<%
+                }%>>
                     <a href="try.jsp?pag=scrivipagina">Scrivi nuovo articolo</a>
                 </li>
                 <%
             }
             %>
             <li class="nav-header">Profile settings</li>
-            <li>
-                <a href="#">Profile</a>
-            </li>
+            <%   
+            if(session.getAttribute("idSession") != null){
+                %>
+                <li<%if(session.getAttribute("page").equals("profile")){
+                    %> class="active"<%
+                }%>>
+                    <a href="try.jsp?pag=profile">Profile</a>
+                </li>
+                <%
+            }
+            %>
             <li>
                 <a href="#">Settings</a>
             </li>

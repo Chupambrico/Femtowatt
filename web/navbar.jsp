@@ -42,7 +42,7 @@
                     }%>><a href="try.jsp?pag=register">Register</a></li>
                     <li id="login" style="display:none;"><a href="#myModal" role="button" data-toggle="modal">Login</a></li>
                     <li id="user"><a href="try.jsp?pag=profile" id="userN"><%=nome%></a></li>
-                    <li id="logout" onclick="logout();"><a>Logout</a></li>
+                    <li id="logout" onclick="logout();"><a href="#">Logout</a></li>
                     <%
                 }
                 %>

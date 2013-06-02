@@ -64,6 +64,7 @@ function avvio(valore){
     document.getElementById('errore').className = "";
     document.getElementById('errore').innerHTML = "";
     document.getElementById('numeriPagine').innerHTML = "";
+    document.getElementById('title').innerHTML = "Ricerca";
     cerca1(valore,0);
 }
 

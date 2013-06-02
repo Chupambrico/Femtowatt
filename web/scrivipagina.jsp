@@ -1,8 +1,21 @@
 <%@page import="java.sql.*" import="database.CreaConnessione" import="database.Login" import="database.Query" contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="connect.jsp"%>
-<script type="text/javascript" src="js/nicEdit.js"></script>
-<script type="text/javascript">
-    bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+<script src="tinymce/tinymce.min.js"></script>
+<script>
+tinymce.init({
+    selector: "textarea",
+    theme: "modern",
+	language : 'it',
+	resize : false,
+	plugins: [
+		"advlist anchor autolink autosave bbcode charmap code contextmenu",
+		"directionality emoticons example example_dependency fullpage fullscreen hr image insertdatetime layer",
+		"legacyoutput link lists media nonbreaking noneditable pagebreak paste preview print",
+		"save searchreplace spellchecker tabfocus table template textcolor visualblocks visualchars wordcount"
+	],
+	content_css: "css/content.css",
+	toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons", 
+});
 </script>
 <script language="javascript">
     var errTitolo="1";

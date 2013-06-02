@@ -32,9 +32,7 @@ while (rs.next()) {
     try{
         if(attivo.equals("on")){
             ap = " btn-success active";
-            dis = " btn-inverse";
         }else{
-            ap = " btn-inverse";
             dis = " btn-danger active";
         }
     }catch(Exception e){}
@@ -54,7 +52,7 @@ while (rs.next()) {
                             + "Approva"
                         + "</button>"
                         + "<button type='button' class='"
-                        + "btn btn-danger" + dis
+                        + "btn" + dis
                         + "' id=" + -i + " onclick='toggle(" + -i + ");'>"
                             + "Disapprova"
                         + "</button>"
