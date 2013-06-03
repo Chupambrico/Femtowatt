@@ -59,3 +59,29 @@ function testout(){
         }
     }    
 }
+
+function testo1(){
+
+
+    if((errTitolo=="0") && (errArgomento="0")){
+
+    var stringa = tinyMCE.activeEditor.getContent();
+   
+    
+    xmlhttp=GetXmlHttpObject();
+    if (xmlhttp==null){
+        alert ("Your browser does not support Ajax HTTP");
+        return;
+    }
+    
+    var url="insertPage.jsp?";
+    url=url+"titolo="+titolo+"&testo="+encodeURIComponent(stringa).replace(/'/g,"%27").replace(/"/g,"%22")+"&argomento="+arg;
+     
+    xmlhttp.onreadystatechange=testout;
+    
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send(null);
+    }else{
+        document.getElementById("errore").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Titolo e argomento sono errati o assenti!</h4></div>"
+    }
+}
