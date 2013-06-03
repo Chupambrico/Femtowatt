@@ -11,15 +11,9 @@ while (rs.next()){
 String testo = request.getParameter("testo");
 String errore = "";    
 String testo2 = testo;
-testo2 = testo2.replaceAll("\\<.*?\\>","");       
-testo2 = testo2.replaceAll("nbsp","");
-testo2 = testo2.replaceAll("&","");
+testo2 = testo2.replaceAll("\\<.*?\\>","");
 testo2 = testo2.replaceAll(";","");
 testo2 = testo2.replaceAll(" ","");
-testo2 = URLDecoder.decode(testo2);
-testo2 = URLEncoder.encode(testo2);
-testo2 = testo2.replaceAll("\\<.*?\\>","");       
-testo2 = testo2.replaceAll("%0D%0A","");
 Integer ltesto2 = testo2.length();
 
 if((testo2 == null) || (testo2.equals("")) ){ 
