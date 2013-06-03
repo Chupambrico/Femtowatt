@@ -16,29 +16,10 @@ plugins: [
     "advlist anchor autolink charmap code contextmenu",
     "emoticons fullscreen hr image insertdatetime",
     "link media nonbreaking paste preview print",
-    "save searchreplace table textcolor visualblocks visualchars wordcount"
+    "searchreplace table textcolor visualblocks visualchars wordcount"
     ],
 content_css: "css/content.css",
-toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | nonbreaking link image | save print preview media fullpage | forecolor backcolor emoticons", 
-save_onsavecallback: function testo1(){
-    if((errTitolo=="0") && (errArgomento="0")){
-        var stringa = tinyMCE.activeEditor.getContent();
-        xmlhttp=GetXmlHttpObject();
-        if (xmlhttp==null){
-            alert ("Your browser does not support Ajax HTTP");
-            return;
-        }
-        var url="insertPage.jsp?";
-        url=url+"titolo="+titolo+"&testo="+encodeURIComponent(stringa).replace(/'/g,"%27").replace(/"/g,"%22")+"&argomento="+arg;
-
-        xmlhttp.onreadystatechange=testout;
-
-        xmlhttp.open("GET",url,true);
-        xmlhttp.send(null);
-    }else{
-        document.getElementById("errore").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Titolo e argomento sono errati o assenti!</h4></div>"
-    }
- }
+toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | nonbreaking link image | print preview media fullpage | forecolor backcolor emoticons", 
 });
 </script>
 <%
@@ -93,6 +74,7 @@ if(session.getAttribute("idSession") == null){
                    </td>
                 </tr>
             </table>
+            <input class="btn btn-success"  type="button" onclick="testo1();" value="Invia!"/>
         </form>
     </div>
     <%
