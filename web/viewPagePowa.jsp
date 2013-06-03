@@ -2,6 +2,26 @@
 <%@include file="connect.jsp" %>
 <script src="js/tinymce/tinymce.min.js"></script>
 <script language="javascript">
+
+function del(){
+    var id=0;
+    id=document.getElementById("cod").value;
+        
+    xmlhttp=GetXmlHttpObject();
+    if (xmlhttp==null){
+           alert ("Your browser does not support Ajax HTTP");
+           return;
+                      }
+      
+
+    var url="deletePage.jsp?";
+    url=url+"cod="+id;
+
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send(null);
+         
+  }
+  
 function mod(){
     document.getElementById("headings").className="headings";
     document.getElementById("testo").className="editable";
@@ -73,10 +93,11 @@ out.print("<div id='titolo'><h2 id='headings'><b> " + titolo + "</b></h2></div><
 out.print("Autore : <b>" + autore + "</b><br>");
 out.print("<div id='arg'>Argomento : <b>" + argomento + "</b></div><br><br>");
 out.print("<div  id='testo' class=''> <br>" + testo+"</div>");
+out.print("<input id='cod' type='hidden' value='"+id+"' >");
 
 if(autore.equals(nome)){
    out.print(" <b>Edit </b><a onclick='mod();' class='icon-edit'> </a>");
-   out.print("  <b>  Delete </b><a href='http://localhost:8084/GP/try.jsp?pag=scrivipagina&mod="+id+"' class='icon-remove'></a>");
+      out.print("  <b>  Delete </b><a onclick='del();' class='icon-remove'></a>");
 }
 
 %>
