@@ -9,12 +9,17 @@ while (rs.next()){
     nomeN = rs.getInt("ID");
 }
 String testo = request.getParameter("testo");
+String argomento = request.getParameter("argomento");
+String mods = request.getParameter("mod");
 String errore = "";    
 String testo2 = testo;
 testo2 = testo2.replaceAll("\\<.*?\\>","");
 testo2 = testo2.replaceAll(";","");
 testo2 = testo2.replaceAll(" ","");
 Integer ltesto2 = testo2.length();
+
+String ida = request.getParameter("cod"); 
+Integer ids = Integer.parseInt(ida);
 
 if((testo2 == null) || (testo2.equals("")) ){ 
     errore = "1";
@@ -41,7 +46,12 @@ if(errore.equals("")){
     String secondi = Integer.toString(calendar.get(calendar.SECOND));
     String data = mese + "/" + giorno + "/" + anno;
     String orario = ora + ":" + minuti + ":" + secondi;
-
+    
+    if(mods.equals("1")){
+        
+    q.esecuzioneUpdate("UPDATE  \"PAGINA\" SET \"TITOLO\"='"+titolo+"' \"DATA\"='"+data+"'\"ORA\"='"+orario+"'\"ARGOMENTO\"='"+argomento+"'\"TESTO\"='"+titolo+"'\"ATTIVO\"='off' WHERE ID='"+ids+"' ");
+    
+    }else{
     int i = 0;
 
     Integer ltesto = testo.length();
@@ -62,7 +72,7 @@ if(errore.equals("")){
         punt += 10000;
 
         q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\") VALUES "
-            + "('" + titolo + "','" + data + "' ,'" + orario + "','ciao','" + ptesto + "','" + nomeN + "')");
+            + "('" + titolo + "','" + data + "' ,'" + orario + "','" + argomento + "','" + ptesto + "','" + nomeN + "')");
         rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\" WHERE \"TITOLO\"='" + titolo + "'");
 
         Integer id = 0;          
@@ -74,18 +84,18 @@ if(errore.equals("")){
             if(a == (i - 2)){
                 ptesto = testo.substring(punt, testo.length());
                 q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\",\"PAGINALEGATA\",\"NPAGINA\") VALUES "
-                    + "('" + titolo + "','" + data + "' ,'" + orario + "','ciao','" + ptesto + "','" + nomeN + "','" + id + "','" + a + "')");
+                    + "('" + titolo + "','" + data + "' ,'" + orario + "','" + argomento + "','" + ptesto + "','" + nomeN + "','" + id + "','" + a + "')");
             }else{
                 ptesto=testo.substring(punt, punt+10000);
                 q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\",\"PAGINALEGATA\",\"NPAGINA\") VALUES "
-                    + "('" + titolo + "','" + data + "' ,'" + orario + "','ciao','" + ptesto + "','" + nomeN + "','" + id + "','" + a + "')");
+                    + "('" + titolo + "','" + data + "' ,'" + orario + "','" + argomento + "','" + ptesto + "','" + nomeN + "','" + id + "','" + a + "')");
             }  
             punt += 10000;             
         }
     }else{
         q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\") VALUES "
-            + "('" + titolo + "','" + data + "' ,'" + orario + "','ciao','" + testo + "','" + nomeN + "')");                                                 
+            + "('" + titolo + "','" + data + "' ,'" + orario + "','" + argomento + "','" + testo + "','" + nomeN + "')");                                                 
     }
-
+    }
 }
 %>
