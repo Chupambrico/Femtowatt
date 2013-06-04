@@ -8,6 +8,7 @@ rs = q.esecuzioneQuery("SELECT * FROM \"UTENTE\" WHERE \"USERNAME\" = '" + nome 
 while (rs.next()){
     nomeN = rs.getInt("ID");
 }
+
 String testo = request.getParameter("testo");
 String argomento = request.getParameter("argomento");
 String mods = request.getParameter("mod");
@@ -18,8 +19,7 @@ testo2 = testo2.replaceAll(";","");
 testo2 = testo2.replaceAll(" ","");
 Integer ltesto2 = testo2.length();
 
-String ida = request.getParameter("cod"); 
-Integer ids = Integer.parseInt(ida);
+
 
 if((testo2 == null) || (testo2.equals("")) ){ 
     errore = "1";
@@ -48,15 +48,16 @@ if(errore.equals("")){
     String orario = ora + ":" + minuti + ":" + secondi;
     
     if(mods.equals("1")){
-        
-    q.esecuzioneUpdate("UPDATE  \"PAGINA\" SET \"TITOLO\"='"+titolo+"' \"DATA\"='"+data+"'\"ORA\"='"+orario+"'\"ARGOMENTO\"='"+argomento+"'\"TESTO\"='"+titolo+"'\"ATTIVO\"='off' WHERE ID='"+ids+"' ");
+     String ida = request.getParameter("cod"); 
+     Integer ids = Integer.parseInt(ida);   
+   q.esecuzioneUpdate("UPDATE  \"PAGINA\" SET \"TITOLO\"='"+titolo+"' ,\"DATA\"='"+data+"',\"ORA\"='"+orario+"',\"ARGOMENTO\"='"+argomento+"',\"TESTO\"='"+testo+"',\"ATTIVO\"='off' WHERE ID="+ids);
     
     }else{
     int i = 0;
 
-    Integer ltesto = testo.length();
+  //  Integer ltesto = testo.length();
 
-    if(ltesto > 10000){
+  /*  if(ltesto > 10000){
         if((testo.length() % 10000) == 0){    
             i = testo.length() / 10000;
         }else{   
@@ -92,10 +93,12 @@ if(errore.equals("")){
             }  
             punt += 10000;             
         }
-    }else{
+    }else{*/
+
+                       
         q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\") VALUES "
             + "('" + titolo + "','" + data + "' ,'" + orario + "','" + argomento + "','" + testo + "','" + nomeN + "')");                                                 
-    }
-    }
+   }
+ //   }
 }
 %>
