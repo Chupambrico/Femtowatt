@@ -60,13 +60,14 @@ function testo1(){
         return;
     }
     
-    var url="insertPage.jsp?";
-    url=url+"titolo="+titolo+"&testo="+encodeURIComponent(stringa).replace(/'/g,"%27").replace(/"/g,"%22")+"&argomento="+arg+"&mod="+0;
+    var url="insertPage.jsp";
+    var param ="titolo="+titolo+"&testo="+encodeURIComponent(stringa).replace(/'/g,"%27").replace(/"/g,"%22")+"&argomento="+arg+"&mod="+0;
      
     xmlhttp.onreadystatechange=testout;
     
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send(null);
+    xmlhttp.open("POST",url,true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send(param);
     }else{
         document.getElementById("errore").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Titolo e argomento sono errati o assenti!</h4></div>"
     }

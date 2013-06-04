@@ -96,8 +96,8 @@ if(errore.equals("")){
     }else{*/
 
                        
-        q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\") VALUES "
-            + "('" + titolo + "','" + data + "' ,'" + orario + "','" + argomento + "','" + testo + "','" + nomeN + "')");                                                 
+        q.esecuzioneUpdate("INSERT INTO \"PAGINA\" (\"TITOLO\",\"DATA\",\"ORA\",\"ARGOMENTO\",\"TESTO\",\"IDUTENTE\",\"ATTIVO\",\"DEL\") VALUES "
+            + "('" + titolo + "','" + data + "' ,'" + orario + "','" + argomento + "','" + testo + "','" + nomeN + "','off','off')");                                                 
    }
  //   }
 }
