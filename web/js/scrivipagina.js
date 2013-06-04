@@ -1,8 +1,3 @@
-var errTitolo="1";
-var titolo="";
-var errAngomento="1";
-var arg="";
-
 function titolo1(){
     var stringa = document.scrivi.titolo.value;
 
@@ -33,16 +28,7 @@ function controlA(){
 }
 
        
-    
-function GetXmlHttpObject(){
-    if (window.XMLHttpRequest){
-        return new XMLHttpRequest();
-    }
-    if (window.ActiveXObject){
-        return new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    return null;
-}
+
 
 function testout(){
     if (xmlhttp.readyState==4){
@@ -75,7 +61,7 @@ function testo1(){
     }
     
     var url="insertPage.jsp?";
-    url=url+"titolo="+titolo+"&testo="+encodeURIComponent(stringa).replace(/'/g,"%27").replace(/"/g,"%22")+"&argomento="+arg;
+    url=url+"titolo="+titolo+"&testo="+encodeURIComponent(stringa).replace(/'/g,"%27").replace(/"/g,"%22")+"&argomento="+arg+"&mod="+0;
      
     xmlhttp.onreadystatechange=testout;
     
