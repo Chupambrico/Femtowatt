@@ -62,7 +62,7 @@ function cercaOutA(){
 function avvioA(valore){
     unaSola=0;
     bottoneDisabled="1";
-    document.getElementById('t1').innerHTML = "Ricerca ...";
+    document.getElementById('title').innerHTML = "Ricerca ...";
     document.getElementById('errore').className = "";
     document.getElementById('errore').innerHTML = "";
     document.getElementById('numeriPagine').innerHTML = "";

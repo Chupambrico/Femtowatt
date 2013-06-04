@@ -13,6 +13,11 @@
                 <%
             }
             %>
+            <li<%if(session.getAttribute("page").equals("ricercaavanzata")){
+                %> class="active"<%
+            }%>>
+                <a href="try.jsp?pag=ricercaAvanzataPrincipale">Ricerca Avanzata</a>
+            </li>
             <li class="nav-header">Profile settings</li>
             <%   
             if(session.getAttribute("idSession") != null){
