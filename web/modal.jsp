@@ -29,7 +29,7 @@
         <div class="alert alert-error hidden" id="loginError">
             <button class="close" type="button" onclick="closePopError();">×</button>
             <strong>Oh snap!</strong>
-            Change a few things up and try submitting again.
+            <p id="errorMessage">Change a few things up and try submitting again.</p>
         </div>
     </div>
     <div class="modal-footer">

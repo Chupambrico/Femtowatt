@@ -16,11 +16,12 @@
             <li class="nav-header">Profile settings</li>
             <%   
             if(session.getAttribute("idSession") != null){
+                Integer id = (Integer)session.getAttribute("id");
                 %>
                 <li<%if(session.getAttribute("page").equals("profile")){
                     %> class="active"<%
                 }%>>
-                    <a href="try.jsp?pag=profile">Profile</a>
+                    <a href="try.jsp?pag=profile&cod=<%=id%>">Profile</a>
                 </li>
                 <%
             }

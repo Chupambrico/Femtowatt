@@ -17,18 +17,12 @@ function login(){
 function navLogin(){
     if (xmlhttp.readyState==4){
         var stringa = xmlhttp.responseText.trim();
-        var Re = new RegExp("%0D%0A","g");
-        stringa = stringa.replace(Re,"");
-        if(stringa != ""){
+        if(stringa == ""){
             $('#myModal').modal('hide')
-            document.getElementById("register").className = "hidden";
-            document.getElementById("login").className = "hidden";
-            document.getElementById("user").className = "";
-            document.getElementById("logout").className = "";
-            document.getElementById("userN").innerHTML = stringa;
             window.location.reload();
         }else{
             document.getElementById("loginError").className = "alert alert-error";
+            document.getElementById("errorMessage").innerHTML = stringa;
         }
     }
 }

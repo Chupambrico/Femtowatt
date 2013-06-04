@@ -1,7 +1,7 @@
 <%@page import="java.sql.*" import="java.util.*" import="java.net.*" import="database.CreaConnessione" import="database.Login" import="database.Query" contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="connect.jsp"%>
 <%
-    rs = q.esecuzioneQuery("SELECT * FROM \"UTENTE\" WHERE \"USERNAME\"='" + session.getAttribute("nome") + "'");
+    rs = q.esecuzioneQuery("SELECT * FROM \"UTENTE\" WHERE \"ID\"='" + request.getParameter("cod") + "'");
     while(rs.next()){
         String id = rs.getString("ID");
         String nome = rs.getString("NOME");

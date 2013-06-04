@@ -58,11 +58,6 @@ String visualPagina = pagina;
         <%@include file="footer.jsp"%>
         <%@include file="modal.jsp"%>
         
-        <script>  
-            $(function () {
-                $("[rel='popover']").popover();  
-            });  
-        </script>
         <script>
             $('#sidebar').affix({
                 offset: $('#sidebar').position()

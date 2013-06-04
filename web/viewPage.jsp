@@ -20,6 +20,7 @@
     }
 
     function mod(){
+        $('#confirmModal').modal('hide');
         document.getElementById("headings").className="headings";
         document.getElementById("testo").className="editable";
         document.getElementById("arg").innerHTML="<div id='ak2' class='control-group '>"+
@@ -79,7 +80,7 @@ while (rs.next()){
 }
 
 if(autore.equals(nome)){
-    out.print("<b>Edit </b><a onclick='mod();' class='icon-edit'></a>");
+    out.print("<b>Edit </b><a href='#confirmModal' role='button' data-toggle='modal' class='icon-edit'></a>");
     out.print("<b> Delete </b><a onclick='del();' class='icon-remove'></a>");
 }
 out.print("<b><h2 id='headings'> " + titolo + "</h2></b><br>");
@@ -88,6 +89,7 @@ out.print("<div id='arg'>Argomento : <b>" + argomento + "</b></div><br>");
 out.print("<div id='testo' class=''><br>" + testo + "</div>");
 out.print("<input id='cod' type='hidden' value='" + id + "' >");
 %>
+<%@include file="confirmModal.jsp"%>
 <br><br>
 <a class="btn btn-primary" href="try.jsp?pag=home">< Indietro</a>
       

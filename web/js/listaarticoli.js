@@ -25,6 +25,7 @@ function inviaRisultati(){
     var url="convalida.jsp?";
     url=url+valori;
     
+    xmlhttp.onreadystatechange = reloadOnState4;
     xmlhttp.open("GET",url,true);
     xmlhttp.send(null);
     
@@ -51,9 +52,16 @@ function inviaRisultati(){
     
     url="elimina.jsp?";
     url=url+valori;
-
+    
+    xmlhttp2.onreadystatechange = reloadOnState4;
     xmlhttp2.open("GET",url,true);
     xmlhttp2.send(null);
+}
+
+function reloadOnState4(){
+    if ((xmlhttp.readyState==4)&&(xmlhttp.readyState==4)){
+        window.location.reload();
+    }
 }
 
 function toggle(id){

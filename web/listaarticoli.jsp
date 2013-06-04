@@ -3,7 +3,6 @@
 <script src="js/listaarticoli.js"></script>
 <%
 rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\" ORDER BY ID ASC");
-out.print("<form name='admin'>");
 out.print("<table border='0'>");
 out.print("<tr><td>Nome Articolo</td><td>Data inserimento</td><td>Abilitato</td><td></td><td>Elimina</td></tr>");
 int i = 0;
@@ -53,12 +52,10 @@ while (rs.next()) {
                     
         }
     }catch(Exception e){}
-    out.print("</div>"
-        + "</td>");
+    out.print("</div>");
     out.print("</td></tr>");
 }
 out.print("</table>");
 out.print("<button type='button' class='btn' onclick='inviaRisultati();'>Invia</button>");
 out.print("<input type='hidden' id='i' value=" + i + "></input>");
-out.print("</form>");
 %>

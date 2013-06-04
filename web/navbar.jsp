@@ -36,12 +36,13 @@
                 }else{
                     String indirizzo = request.getRequestURI() + "?" + request.getQueryString();
                     String nome = (String)session.getAttribute("nome");
+                    Integer id = (Integer)session.getAttribute("id");
                     %>
                     <li id="register" style="display:none;"<%if(session.getAttribute("page").equals("register")){
                         %> class="active"<%
                     }%>><a href="try.jsp?pag=register">Register</a></li>
                     <li id="login" style="display:none;"><a href="#myModal" role="button" data-toggle="modal">Login</a></li>
-                    <li id="user"><a href="try.jsp?pag=profile" id="userN"><%=nome%></a></li>
+                    <li id="user"><a href="try.jsp?pag=profile&cod=<%=id%>" id="userN"><%=nome%></a></li>
                     <li id="logout" onclick="logout();"><a href="#">Logout</a></li>
                     <%
                 }

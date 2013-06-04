@@ -13,7 +13,7 @@
   }else{
   Integer id=0;
   String titolo,testo,autore,ora,data;
-  rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\" AND LOWER( \"TITOLO\") LIKE LOWER('%"+nome+"%') AND \"PAGINA\".\"PAGINALEGATA\" IS NULL ORDER BY TITOLO ");
+  rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\" AND LOWER( \"TITOLO\") LIKE LOWER('%"+nome+"%') AND \"PAGINA\".\"ATTIVO\" = 'on' AND \"PAGINA\".\"DEL\" <> 'on' ORDER BY TITOLO ");
  // rs = q.esecuzioneQuery("SELECT * FROM \"UTENTE\" WHERE \"USERNAME\"='qwe'  ");
   while(rs.next()){i++;}
   

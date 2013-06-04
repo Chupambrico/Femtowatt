@@ -1,5 +1,9 @@
 <script src="js/register.js"></script>
-
+<script>  
+    $(function () {
+        $("[rel='popover']").popover();  
+    });  
+</script>
 <div style="background-color: gainsboro; width:300px;  border-radius: 10px 10px  10px  10px ;  margin: 0 auto;" >
     <form name="modulo_form" >
         <div style="padding-left:5px; padding-top:5px; padding-bottom:10px;  " >

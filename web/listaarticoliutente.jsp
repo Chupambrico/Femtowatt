@@ -1,15 +1,12 @@
-<%@page import="java.util.*" import="java.net.*" import="java.sql.*" import="database.CreaConnessione" import="database.Login" import="database.Query" contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="connect.jsp"%>
-<%
-
- rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\" AND \"PAGINA\".\"ATTIVO\" = 'on' AND \"PAGINA\".\"DEL\" <> 'on' ORDER BY DATA,ORA DESC ");
-int i=0;
-int id = 0;
-String titolo, testo, autore, ora, data;
-out.print("<table width='800px'>");
-
-    while((rs.next()) && (i < 10)){//Bottone number 1
-        i++;
+<%@page import="java.sql.*" import="database.CreaConnessione"  import="java.sql.*" import="database.Query" contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="connect.jsp" %>
+<%  
+String titolo, autore, testo, data, ora; 
+Integer id;
+String idUtente = request.getParameter("n");
+rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\" AND \"UTENTE\".\"ID\" = '" + idUtente + "' AND \"PAGINA\".\"ATTIVO\" = 'on' AND \"PAGINA\".\"DEL\" <> 'on' ORDER BY \"DATA\"");
+out.print("<table>");   
+while(rs.next()){
         id = rs.getInt("ID");
         titolo = rs.getString("TITOLO");
         autore = rs.getString("USERNAME");
@@ -32,5 +29,5 @@ out.print("<table width='800px'>");
         out.print("<tr><td>" + data + " " + ora + "</td></tr>");
         out.print("<tr><td><hr width='800px' size='1' style='border: small dashed' ></td></tr>");
     }
-    out.print("</table>");
+out.print("</table>"); 
 %>

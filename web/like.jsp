@@ -11,7 +11,7 @@ if(n == null || nome == null){
 }else{
     Integer id = 0;
     String titolo, testo, autore, ora, data;
-    rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\" AND LOWER( \"TITOLO\") LIKE LOWER('%"+nome+"%')  ORDER BY TITOLO ");
+    rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\" AND LOWER( \"TITOLO\") LIKE LOWER('%"+nome+"%') AND \"PAGINA\".\"ATTIVO\" = 'on' AND \"PAGINA\".\"DEL\" <> 'on' ORDER BY TITOLO ");
     
     Integer nElementi = 0;
     nElementi = Integer.parseInt(n);
