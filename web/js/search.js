@@ -10,7 +10,7 @@ function nPagina(){
         return;
     }
     var url="contaElementi.jsp";
-    url=url+"?alfa="+nomeSpecial;
+    url=url+"?alfa="+encodeURIComponent(nomeSpecial).replace(/'/g,"%27").replace(/"/g,"%22");
     xmlhttp.onreadystatechange=nPagineOut;
     xmlhttp.open("GET",url,true);
     xmlhttp.send(null);
@@ -81,7 +81,7 @@ function cerca1(valore,disabilitare){
         bottoneDisabled=disabilitare;
     }
     var url="like.jsp?";
-    url=url+"alfa="+nomeSpecial+"&nElementi="+valore;
+    url=url+"alfa="+encodeURIComponent(nomeSpecial).replace(/'/g,"%27").replace(/"/g,"%22")+"&nElementi="+valore;
     xmlhttp.onreadystatechange=cercaOut;
     xmlhttp.open("GET",url,true);
     xmlhttp.send(null);

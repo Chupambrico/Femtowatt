@@ -48,12 +48,11 @@ if(errore.equals("")){
     String orario = ora + ":" + minuti + ":" + secondi;
     
     if(mods.equals("1")){
-     String ida = request.getParameter("cod"); 
-     Integer ids = Integer.parseInt(ida);   
-   q.esecuzioneUpdate("UPDATE  \"PAGINA\" SET \"TITOLO\"='"+titolo+"' ,\"DATA\"='"+data+"',\"ORA\"='"+orario+"',\"ARGOMENTO\"='"+argomento+"',\"TESTO\"='"+testo+"',\"ATTIVO\"='off' WHERE ID="+ids);
-    
+        String ida = request.getParameter("cod"); 
+        Integer ids = Integer.parseInt(ida);
+        q.esecuzioneUpdate("UPDATE  \"PAGINA\" SET \"TITOLO\"='"+titolo+"' ,\"DATA\"='"+data+"',\"ORA\"='"+orario+"',\"ARGOMENTO\"='"+argomento+"',\"TESTO\"='"+testo+"',\"ATTIVO\"='off' WHERE ID="+ids);
     }else{
-    int i = 0;
+        int i = 0;
 
   //  Integer ltesto = testo.length();
 

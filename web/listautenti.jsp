@@ -1,5 +1,6 @@
 <%@page import="java.sql.*" import="database.CreaConnessione"  import="java.sql.*" import="database.Query" contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="connect.jsp" %>
+<%@include file="schede.html" %>
 <script src="js/listautenti.js"></script>
 <%  
 String nome, cognome, ban;

@@ -41,7 +41,7 @@ function testout(){
         }else{
             document.getElementById("errore").innerHTML=""
             document.getElementById("errore").innerHTML="<div class='alert alert-success'><h4><b>Grazie!</b> Testo Inserito correttamente!</h4></div>"
-            setTimeout(function(){ location.href = "try.jsp"; },5000);
+            setTimeout(function(){ location.href = "index.jsp"; },5000);
         }
     }    
 }

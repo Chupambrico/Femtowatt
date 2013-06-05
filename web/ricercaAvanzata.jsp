@@ -33,6 +33,7 @@ int i = 0;
   
     
     if(richiesta!=""){
+    richiesta = richiesta.replaceAll("'","''"); 
     rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\" AND "+richiesta+"  ORDER BY TITOLO ");
      }else{  rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\"  ORDER BY TITOLO ");}
     
@@ -60,14 +61,8 @@ int i = 0;
         testo = rs.getString("TESTO");
         testo = testo.replaceAll("\\<.*?\\>", "");
 
-        Integer ltesto = testo.length();
-
-        if(ltesto > 100){
-            testo = testo.substring(0,30);
-        }else{
-            ltesto = (int)(ltesto * 0.3);
-            testo = testo.substring(0, ltesto) ; 
-        }
+        testo = testo.substring(0,100);
+        
         data = rs.getString("DATA");
         ora = rs.getString("ORA");
         out.print("<tr><td><b><h4><a href='index.jsp?pag=viewPage&cod=" + id + "'>" + titolo + "</a></h4></b></td></tr>");

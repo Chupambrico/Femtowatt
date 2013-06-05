@@ -39,10 +39,13 @@ int i = 0;
   
     
     if(richiesta!=""){
+    richiesta = richiesta.replaceAll("'","''"); 
     rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\" AND "+richiesta+"  ORDER BY TITOLO ");
      }else{  rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\"  ORDER BY TITOLO ");}
     
-  while(rs.next()){i++;}
+  while(rs.next()){
+      i++;
+  }
   
   if(i%10==0){
   out.print(i/10);

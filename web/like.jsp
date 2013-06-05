@@ -11,6 +11,7 @@ if(n == null || nome == null){
 }else{
     Integer id = 0;
     String titolo, argomento, testo, autore, ora, data;
+    nome = nome.replaceAll("'","''"); 
     rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\" AND LOWER( \"TITOLO\") LIKE LOWER('%"+nome+"%') AND \"PAGINA\".\"ATTIVO\" = 'on' AND \"PAGINA\".\"DEL\" <> 'on' ORDER BY TITOLO ");
     
     Integer nElementi = 0;
@@ -37,14 +38,8 @@ if(n == null || nome == null){
         testo = rs.getString("TESTO");
         testo = testo.replaceAll("\\<.*?\\>", "");
 
-        Integer ltesto = testo.length();
-
-        if(ltesto > 100){
-            testo = testo.substring(0,30);
-        }else{
-            ltesto = (int)(ltesto * 0.3);
-            testo = testo.substring(0, ltesto) ; 
-        }
+        testo = testo.substring(0,100);
+        
         data = rs.getString("DATA");
         ora = rs.getString("ORA");
         out.print("<tr><td><b><h4><a href='index.jsp?pag=viewPage&cod=" + id + "'>" + titolo + "</a></h4></b></td></tr>");

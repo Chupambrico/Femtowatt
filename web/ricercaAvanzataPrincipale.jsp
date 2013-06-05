@@ -11,7 +11,7 @@ function nPaginaA(){
         return;
     }
     var url="contaElementiA.jsp?";
-    url=url+"titolo="+titolo+"&argomento="+arg+"&autore="+utente;
+    url=url+"titolo="+encodeURIComponent(titolo).replace(/'/g,"%27").replace(/"/g,"%22")+"&argomento="+encodeURIComponent(arg).replace(/'/g,"%27").replace(/"/g,"%22")+"&autore="+encodeURIComponent(utente).replace(/'/g,"%27").replace(/"/g,"%22");
     xmlhttp.onreadystatechange=nPagineOutA;
     xmlhttp.open("GET",url,true);
     xmlhttp.send(null);
@@ -84,7 +84,7 @@ function cercaA(valore,disabilitare){
         bottoneDisabled=disabilitare;
     }
     var url="ricercaAvanzata.jsp?";
-    url=url+"titolo="+titolo+"&nElementi="+valore+"&argomento="+arg+"&autore="+utente;
+    url=url+"titolo="+encodeURIComponent(titolo).replace(/'/g,"%27").replace(/"/g,"%22")+"&nElementi="+valore+"&argomento="+encodeURIComponent(arg).replace(/'/g,"%27").replace(/"/g,"%22")+"&autore="+encodeURIComponent(utente).replace(/'/g,"%27").replace(/"/g,"%22");
     xmlhttp.onreadystatechange=cercaOutA;
     xmlhttp.open("GET",url,true);
     xmlhttp.send(null);
