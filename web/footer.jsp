@@ -8,13 +8,6 @@
             .
         </p>
         <p>
-            Code licensed under
-            <a target="_blank" href="#">Apache License v2.0</a>
-            , documentation under
-            <a href="#">CC BY 3.0</a>
-            .
-        </p>
-        <p>
             <a href="#">Glyphicons Free</a>
             licensed under
             <a href="#">CC BY 3.0</a>
@@ -22,15 +15,15 @@
         </p>
         <ul class="footer-links">
             <li>
-                <a href="#">Blog</a>
+                <a href="#">A</a>
             </li>
             <li class="muted">·</li>
             <li>
-                <a href="#">Issues</a>
+                <a href="#">B</a>
             </li>
             <li class="muted">·</li>
             <li>
-                <a href="#">Changelog</a>
+                <a href="#">C</a>
             </li>
         </ul>
     </div>

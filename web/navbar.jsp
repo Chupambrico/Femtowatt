@@ -7,17 +7,17 @@
             <ul class="nav">
                 <li<%if(session.getAttribute("page").equals("home")){
                     %> class="active"<%
-                }%>><a href="try.jsp?pag=home">Home</a></li>
+                }%>><a href="index.jsp?pag=home">Home</a></li>
                 <li<%if(session.getAttribute("page").equals("showPages")){
                     %> class="active"<%
-                }%>><a href="try.jsp?pag=showPages">Articoli</a></li>
+                }%>><a href="index.jsp?pag=showPages">Articoli</a></li>
                 <%
                 try{
                     if(session.getAttribute("livello").equals(10)){
                         %>
                         <li<%if(session.getAttribute("page").equals("administrator")){
                             %> class="active"<%
-                        }%>><a href="try.jsp?pag=administrator">Amministrazione</a></li>
+                        }%>><a href="index.jsp?pag=administrator">Amministrazione</a></li>
                         <%
                     }
                 }catch(Exception e){}
@@ -28,9 +28,9 @@
                     %>
                     <li id="register"<%if(session.getAttribute("page").equals("register")){
                         %> class="active"<%
-                    }%>><a href="try.jsp?pag=register">Register</a></li>
+                    }%>><a href="index.jsp?pag=register">Register</a></li>
                     <li id="login"><a href="#myModal" role="button" data-toggle="modal">Login</a></li>
-                    <li id="user" style="display:none;"><a href="try.jsp?pag=profile" id="userN"></a></li>
+                    <li id="user" style="display:none;"><a href="index.jsp?pag=profile" id="userN"></a></li>
                     <li id="logout" style="display:none;" onclick="logout();"><a href="#">Logout</a></li>
                     <%
                 }else{
@@ -40,9 +40,13 @@
                     %>
                     <li id="register" style="display:none;"<%if(session.getAttribute("page").equals("register")){
                         %> class="active"<%
-                    }%>><a href="try.jsp?pag=register">Register</a></li>
+                    }%>><a href="index.jsp?pag=register">Register</a></li>
                     <li id="login" style="display:none;"><a href="#myModal" role="button" data-toggle="modal">Login</a></li>
-                    <li id="user"><a href="try.jsp?pag=profile&cod=<%=id%>" id="userN"><%=nome%></a></li>
+                    <li id="user"<%Boolean a = false;
+                        try{a = Integer.parseInt(request.getParameter("cod")) == id;}catch(Exception e){}
+                        if((session.getAttribute("page").equals("profile"))&&(a)){
+                        %> class="active"<%
+                    }%>><a href="index.jsp?pag=profile&cod=<%=id%>" id="userN"><%=nome%></a></li>
                     <li id="logout" onclick="logout();"><a href="#">Logout</a></li>
                     <%
                 }

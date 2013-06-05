@@ -3,6 +3,5 @@
 <%
 String id = request.getParameter("cod"); 
 Integer ids = Integer.parseInt(id);
-q.esecuzioneUpdate("UPDATE  \"PAGINA\" SET \"ATTIVO\"='del' WHERE ID='"+ids+"' ");
-
+q.esecuzioneUpdate("UPDATE  \"PAGINA\" SET \"DEL\"='on' WHERE ID='"+ids+"' ");
 %>

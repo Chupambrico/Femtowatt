@@ -29,6 +29,10 @@ public class Login {
         if (ris.next() == false){
             throw new Exception("Eccezione : Nome utente inesistente") ;
         }
+        String ban = ris.getString("BAN");
+        if (ban.equals("on")){
+            throw new Exception("Eccezione : Utente bannato") ;
+        }
         return true;
     }
 }

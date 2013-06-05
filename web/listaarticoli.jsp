@@ -24,7 +24,7 @@ while (rs.next()) {
     i++;
     out.print("<tr>"
                 + "<td>"
-                    + "<a href='try.jsp?pag=viewPage&cod=" + id + "'>" + titolo + "</a>"
+                    + "<a href='index.jsp?pag=viewPage&cod=" + id + "'>" + titolo + "</a>"
                 + "</td>"
                 + "<td>"
                     + data

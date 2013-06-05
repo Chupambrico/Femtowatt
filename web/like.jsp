@@ -46,7 +46,7 @@ if(n == null || nome == null){
         }
         data = rs.getString("DATA");
         ora = rs.getString("ORA");
-        out.print("<tr><td><b><h4><a href='try.jsp?pag=viewPage&cod=" + id + "'>" + titolo + "</a></h4></b></td></tr>");
+        out.print("<tr><td><b><h4><a href='index.jsp?pag=viewPage&cod=" + id + "'>" + titolo + "</a></h4></b></td></tr>");
         out.print("<tr><td><b>" + autore + "</b></td></tr>");
         out.print("<tr><td><i>" + testo + "</i></td></tr>");
         out.print("<tr><td>" + data + " " + ora + "</td></tr>");

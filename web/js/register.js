@@ -209,7 +209,7 @@ var i=0;
                 
                 xmlhttp.open("POST",url,true);
                 xmlhttp.send(null);  
-                location.href = "try.jsp?pag=messaggi&mess=Registrazione1effetuata"; 
+                location.href = "index.jsp?pag=messaggi&mess=Registrazione1effetuata"; 
             }
         }
     }

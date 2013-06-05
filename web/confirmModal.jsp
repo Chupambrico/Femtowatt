@@ -6,9 +6,9 @@
     <div class="modal-body">
         <div class="alert alert-error">
             <strong>Attenzione!</strong>
-            <p>Modificando il testo esso dovrà essere riconfermato, e non apparirà fino ad allora nelle ricerche né potrà essere visualizzato.</p>
+            <p id="content"></p>
         </div>
-        <button class="btn btn-primary" type="button" onclick="mod();">Continua</button>
+        <button class="btn btn-primary" id="confirmButton" type="button" onclick="">Continua</button>
         <button class="btn" type="button" onclick="$('#confirmModal').modal('hide');">Annulla</button>
         </form>
         

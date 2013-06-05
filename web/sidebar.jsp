@@ -8,25 +8,34 @@
                 <li<%if(session.getAttribute("page").equals("scrivipagina")){
                     %> class="active"<%
                 }%>>
-                    <a href="try.jsp?pag=scrivipagina">Scrivi nuovo articolo</a>
+                    <a href="index.jsp?pag=scrivipagina">Scrivi nuovo articolo</a>
                 </li>
                 <%
             }
             %>
-            <li<%if(session.getAttribute("page").equals("ricercaavanzata")){
+            <li<%if(session.getAttribute("page").equals("ricercaAvanzataPrincipale")){
                 %> class="active"<%
             }%>>
-                <a href="try.jsp?pag=ricercaAvanzataPrincipale">Ricerca Avanzata</a>
+                <a href="index.jsp?pag=ricercaAvanzataPrincipale">Ricerca Avanzata</a>
             </li>
             <li class="nav-header">Profile settings</li>
             <%   
             if(session.getAttribute("idSession") != null){
                 Integer id = (Integer)session.getAttribute("id");
                 %>
-                <li<%if(session.getAttribute("page").equals("profile")){
+                <li<%Boolean a = false;
+                        try{a = Integer.parseInt(request.getParameter("cod")) == id;}catch(Exception e){}
+                        if((session.getAttribute("page").equals("profile"))&&(a)){
+                        %> class="active"<%
+                    }%>>
+                    <a href="index.jsp?pag=profile&cod=<%=id%>">Profile</a>
+                </li>
+                <li<%Boolean b = false;
+                    try{b = Integer.parseInt(request.getParameter("n")) == id;}catch(Exception e){}
+                    if((session.getAttribute("page").equals("listaarticoliutente"))&&(b)){
                     %> class="active"<%
                 }%>>
-                    <a href="try.jsp?pag=profile&cod=<%=id%>">Profile</a>
+                    <a href="index.jsp?pag=listaarticoliutente&n=<%=id%>">Miei Articoli</a>
                 </li>
                 <%
             }

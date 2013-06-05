@@ -23,18 +23,20 @@ while (rs.next()){
 }
 
 if(autore.equals(nome)){
-    out.print("<b>Edit </b><a href='#confirmModal' role='button' data-toggle='modal' class='icon-edit'></a>");
-    out.print("<b> Delete </b><a onclick='del();' class='icon-remove'></a>");
-	out.print("<div id='bottone'></div>");
+    out.print("<div id='modEl'>");
+    out.print("<b>Edit </b><a onclick='a();' class='icon-edit'></a>");
+    out.print("<b> Delete </b><a onclick='b();' class='icon-remove'></a>");
+    out.print("</div>");
 }
-out.print("<div id='avvisi'></div><br>");                   
+out.print("<div id='avvisi'></div>");                   
 out.print("<b><h2 id='headings'> " + titolo + "</h2></b><br>");
 out.print("Autore : <b>" + autore + "</b><br>");
 out.print("<div id='arg'>Argomento : <b>" + argomento + "</b></div><br>");
 out.print("<div id='testo' class=''><br>" + testo + "</div>");
 out.print("<input id='cod' type='hidden' value='" + id + "' >");
+out.print("<div id='bottone'></div>");
 %>
 <%@include file="confirmModal.jsp"%>
 <br><br>
-<a class="btn btn-primary" href="try.jsp?pag=home">< Indietro</a>
+<a class="btn btn-primary" href="index.jsp?pag=home">< Indietro</a>
       
