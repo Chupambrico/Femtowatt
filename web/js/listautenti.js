@@ -43,3 +43,6 @@ function ban(id){
     document.getElementById(id).className = "btn";
     }
 }
+window.onload=function a() { document.getElementById("l2").className="active";  
+    document.getElementById("l1").className="";
+    document.getElementById("l3").className="";}
