@@ -9,7 +9,7 @@ Integer id;
 Integer i = 0;
 rs = q.esecuzioneQuery("SELECT * FROM \"UTENTE\" ORDER BY \"NOME\"");
 out.print("<table>");   
-out.print("<tr><td>Nome</td><td>Cognome</td></tr>");        
+out.print("<tr><td>Nome - Cognome</td></tr>");        
 while(rs.next()){
     i++;
     nome = rs.getString("NOME");           
@@ -23,11 +23,9 @@ while(rs.next()){
     id = rs.getInt("ID");
     out.print("<tr>"
                 + "<td>"
-                    + "<a href='index.jsp?pag=profile&cod=" + id + "'>" + nome + "</a>"
+                    + "<a href='index.jsp?pag=profile&cod=" + id + "'>" + nome + " " + cognome + "</a>"
                 + "</td>"
-                + "<td>"
-                    + "<a href='index.jsp?pag=profile&cod=" + id + "'>" + cognome + "</a>"
-                + "</td>"
+                + "<td class='span1'></td>"
                 + "<td>"
                     + "<a href='index.jsp?pag=listaarticoliutente&n=" + id + "'>Lista articoli</a>"
                 + "</td>"
