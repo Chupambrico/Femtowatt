@@ -12,5 +12,5 @@ String giorno = controlloData[0];
 String mese = controlloData[1];
 String anno = controlloData[2];
 String data = mese + "/" + giorno + "/" + anno;
-q.esecuzioneUpdate("INSERT INTO \"UTENTE\" (\"NOME\", \"COGNOME\", \"DATADINASCITA\", \"EMAIL\", \"USERNAME\", \"PASS\") VALUES ('" + nome + "', '" + cognome + "', '" +data+ "', '" + email + "', '" + utente + "', '" + password + "')");
+q.esecuzioneUpdate("INSERT INTO \"UTENTE\" (\"NOME\", \"COGNOME\", \"DATADINASCITA\", \"EMAIL\", \"USERNAME\", \"PASS\", \"LIVELLO\", \"BAN\") VALUES ('" + nome + "', '" + cognome + "', '" +data+ "', '" + email + "', '" + utente + "', '" + password + "', '1', 'off')");
 %>

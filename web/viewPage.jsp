@@ -31,7 +31,7 @@ if(autore.equals(nome)){
 out.print("<div id='avvisi'></div>");                   
 out.print("<b><h2 id='headings'> " + titolo + "</h2></b><br>");
 out.print("Autore : <b>" + autore + "</b><br>");
-out.print("<div id='arg'>Argomento : <b>" + argomento + "</b></div><br>");
+out.print("<div id='arg'>Argomento : <b id='a'>" + argomento + "</b></div><br>");
 out.print("<div id='testo' class=''><br>" + testo + "</div>");
 out.print("<input id='cod' type='hidden' value='" + id + "' >");
 out.print("<div id='bottone'></div>");

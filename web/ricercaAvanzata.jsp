@@ -9,7 +9,7 @@ String n = request.getParameter("nElementi");
 
 int i = 0;
 
-    String titolo, testo,  ora, data,autore,richiesta="";
+    String titolo, argomento, testo,  ora, data,autore,richiesta="";
     Integer idu=0,qer=0;
     
     if((autore1!="")&&(autore1 != null)){
@@ -54,6 +54,7 @@ int i = 0;
     while((rs.next()) && (i < 10)){//Bottone number 1
         i++;
         id = rs.getInt("ID");
+        argomento = rs.getString("ARGOMENTO");
         titolo = rs.getString("TITOLO");
         autore = rs.getString("USERNAME");
         testo = rs.getString("TESTO");
@@ -70,8 +71,9 @@ int i = 0;
         data = rs.getString("DATA");
         ora = rs.getString("ORA");
         out.print("<tr><td><b><h4><a href='index.jsp?pag=viewPage&cod=" + id + "'>" + titolo + "</a></h4></b></td></tr>");
-        out.print("<tr><td><b>" + autore + "</b></td></tr>");
-        out.print("<tr><td><i>" + testo + "</i></td></tr>");
+        out.print("<tr><td>In " + argomento + "</td></tr>");
+        out.print("<tr><td>By <b>" + autore + "</b></td></tr>");
+        out.print("<tr><td><i>" + testo + "...</i></td></tr>");
         out.print("<tr><td>" + data + " " + ora + "</td></tr>");
         out.print("<tr><td><hr width='800px' size='1' style='border: small dashed' ></td></tr>");
     }

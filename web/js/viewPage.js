@@ -9,7 +9,7 @@ function titolo1(){
     var regexp =/^[a-zA-Z0-9\s]+$/;
 
     if (regexp.test(stringa) == false){
-          document.getElementById("avvisi").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b>Titolo non corrtetto!</h4></div>"
+          document.getElementById("avvisi").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b>Titolo non corrtetto!</h4></div>";
       
         errTitolo="1";
     }else{
@@ -20,7 +20,7 @@ function titolo1(){
 }
     
 function controlA(){
-    var stringa = document.scrivi.argomento.value;
+    var stringa = document.getElementById("argomento").value;
     if (stringa=="0"){
         document.getElementById("ak2").className="control-group error";
         errArgomento="1";
@@ -39,10 +39,10 @@ function testout(){
         stringa = stringa.replace(Re,"");
         
         if(stringa=="1" || stringa=="2"){
-            document.getElementById("avvisi").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Testo inferiore ai 100 caratteri!</h4></div>"
+            document.getElementById("avvisi").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Testo inferiore ai 100 caratteri!</h4></div>";
         }else{
-            document.getElementById("avvisi").innerHTML=""
-            document.getElementById("avvisi").innerHTML="<div class='alert alert-success'><h4><b>Grazie!</b> Testo Inserito correttamente!</h4></div>"
+            document.getElementById("avvisi").innerHTML="";
+            document.getElementById("avvisi").innerHTML="<div class='alert alert-success'><h4><b>Grazie!</b> Testo Inserito correttamente!</h4></div>";
             setTimeout(function(){ location.href = "index.jsp"; },5000);
         }
     }    
@@ -79,6 +79,7 @@ function testo1(){
 function inviaMod(){
     var id;
     titolo1();
+    controlA();
     testo1();
 }
 
@@ -123,22 +124,50 @@ function mod(){
     $('#confirmModal').modal('hide');
     document.getElementById("modEl").className="hidden";
     document.getElementById("bottone").innerHTML="<a class='btn btn-primary' onclick='inviaMod();' >Salva Modifiche</a>";
-    document.getElementById("avvisi").innerHTML="<div class='alert alert-warning'><h4><b>Attenzione!</b> Far click sulle parti che si vogliono modificare!</h4></div>"
+    document.getElementById("avvisi").innerHTML="<div class='alert alert-warning'><h4><b>Attenzione!</b> Far click sulle parti che si vogliono modificare!</h4></div>";
     document.getElementById("headings").className="headings";
     document.getElementById("testo").className="editable";
+    var s1, s2, s3, s4, s5, s6, s7, s8;
+    var ar = document.getElementById("a").innerHTML;
+    switch(ar){
+        case "Elettronica":
+            s1 = " selected";
+            break;
+        case "Informatica":
+            s2 = " selected";
+            break;
+        case "Inglese":
+            s3 = " selected";
+            break;
+        case "Italiano":
+            s4 = " selected";
+            break;
+        case "Matematica":
+            s5 = " selected";
+            break;
+        case "Storia":
+            s6 = " selected";
+            break;
+        case "Sistemi":
+            s7 = " selected";
+            break;
+        case "Stetistica":
+            s8 = " selected";
+            break;
+    }
     document.getElementById("arg").innerHTML="<div id='ak2' class='control-group '>"+
         "<label class='control-label'></label>"+
         "<div class='controls' >"+
-        "<select name='argomento' onchange='controlA();'>"+
+        "<select id='argomento' onchange='controlA();'>"+
         "<option value='0'>---Segli Argomento---</option>"+
-        "<option value='Elettronica'>Elettronica</option>"+
-        "<option value='Informatica'>Informatica</option>"+
-        "<option value='Inglese'>Inglese</option>"+
-        "<option value='Italiano'>Italiano</option>"+
-        "<option value='Matematica'>Matematica</option>"+
-        "<option value='Storia'>Storia</option>"+
-        "<option value='Sistemi'>Sistemi</option>"+
-        "<option value='Statistica'>Statistica</option>"+
+        "<option value='Elettronica'" + s1 + ">Elettronica</option>"+
+        "<option value='Informatica'" + s2 + ">Informatica</option>"+
+        "<option value='Inglese'" + s3 + ">Inglese</option>"+
+        "<option value='Italiano'" + s4 + ">Italiano</option>"+
+        "<option value='Matematica'" + s5 + ">Matematica</option>"+
+        "<option value='Storia'" + s6 + ">Storia</option>"+
+        "<option value='Sistemi'" + s7 + ">Sistemi</option>"+
+        "<option value='Statistica'" + s8 + ">Statistica</option>"+
         "</select>"+
         "</div>"+
         "</div>"+
