@@ -41,17 +41,20 @@ function testout(){
         }else{
             document.getElementById("errore").innerHTML=""
             document.getElementById("errore").innerHTML="<div class='alert alert-success'><h4><b>Grazie!</b> Testo Inserito correttamente!</h4></div>"
-            setTimeout(function(){ location.href = "index.jsp"; },5000);
+            setTimeout(function(){ location.href = "try.jsp"; },5000);
         }
     }    
 }
 
 function testo1(){
-
+     var stringa = tinyMCE.activeEditor.getContent();
+   
+ if(stringa.length>50000){
+         document.getElementById("errore").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b>Testo troppo lungo supera i 10000 !Sono "+stringa.length+"</h4></div>";
+  }else{  
 
     if((errTitolo=="0") && (errArgomento="0")){
 
-    var stringa = tinyMCE.activeEditor.getContent();
    
     
     xmlhttp=GetXmlHttpObject();
@@ -69,6 +72,7 @@ function testo1(){
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xmlhttp.send(param);
     }else{
-        document.getElementById("errore").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Titolo e argomento sono errati o assenti!</h4></div>"
+        document.getElementById("errore").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Titolo o argomento sono errati o assenti!</h4></div>"
     }
+    } 
 }
