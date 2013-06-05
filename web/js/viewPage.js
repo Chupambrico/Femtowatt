@@ -170,7 +170,6 @@ function mod(){
         "<option value='Statistica'" + s8 + ">Statistica</option>"+
         "</select>"+
         "</div>"+
-        "</div>"+
         "</div>";
     tinymce.init({
         selector: "h2.headings",

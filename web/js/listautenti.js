@@ -28,10 +28,34 @@ function inviaRisultati(){
     xmlhttp.onreadystatechange = reloadOnState4;
     xmlhttp.open("GET",url,true);
     xmlhttp.send(null);
+    
+    var valori="",stato="",valore="";
+
+    for(var i = 1; i <= tot; i++){
+        valore=document.getElementById("lvl" + i).value;
+        if(valori == ""){
+            valori=document.getElementById("lvl" + i).name+"="+valore;
+        }else{
+            valori=valori +"&"+document.getElementById("lvl" + i).name+"="+valore;
+        }
+    }
+    
+    xmlhttp2=GetXmlHttpObject();
+    if (xmlhttp2==null){
+        alert ("Your browser does not support Ajax HTTP");
+        return;
+    }
+    
+    url="livello.jsp?";
+    url=url+valori;
+    
+    xmlhttp2.onreadystatechange = reloadOnState4;
+    xmlhttp2.open("GET",url,true);
+    xmlhttp2.send(null);
 }
 
 function reloadOnState4(){
-    if (xmlhttp.readyState==4){
+    if ((xmlhttp.readyState==4)&&(xmlhttp2.readyState==4)){
         window.location.reload();
     }
 }
