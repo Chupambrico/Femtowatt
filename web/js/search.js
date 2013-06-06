@@ -47,6 +47,7 @@ function nPagineOut(){
 function cercaOut(){
     document.getElementById("loadBar").style.width = (xmlhttp.readyState * 25) + "%";
     if (xmlhttp.readyState==4){
+        setTimeout(function(){document.getElementById("r").innerHTML="";},750);
         var stringa= xmlhttp.responseText.trim();
         /*var Re = new RegExp("%0D%0A","g");
         stringa = stringa.replace(Re,"");*/
@@ -71,7 +72,7 @@ function avvio(valore){
 
 function cerca1(valore,disabilitare){
     xmlhttp=GetXmlHttpObject();
-    document.getElementById('lista').innerHTML = "<div class=\"progress progress-striped active\"><div class=\"bar\" style=\"width: 0%;\" id=\"loadBar\"></div></div>";
+    document.getElementById('r').innerHTML = "<div class=\"progress progress-striped active\"><div class=\"bar\" style=\"width: 0%;\" id=\"loadBar\"></div></div>";
     if (xmlhttp==null){
         alert ("Your browser does not support Ajax HTTP");
         return;

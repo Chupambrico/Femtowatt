@@ -36,7 +36,7 @@ String visualPagina = pagina;
                         <h1 id="title"><%=visualPagina%></h1>
                     </div>
                     <div>
-                        <div id="r" class="">
+                        <div id="r">
                         </div>
                         <div id="lista">
                             <%

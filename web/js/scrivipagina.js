@@ -37,10 +37,10 @@ function testout(){
         stringa = stringa.replace(Re,"");
         
         if(stringa=="1" || stringa=="2"){
-            document.getElementById("errore").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Testo inferiore ai 100 caratteri!</h4></div>"
+            document.getElementById("errore").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Testo inferiore ai 100 caratteri!</h4></div>";
         }else{
-            document.getElementById("errore").innerHTML=""
-            document.getElementById("errore").innerHTML="<div class='alert alert-success'><h4><b>Grazie!</b> Testo Inserito correttamente!</h4></div>"
+            document.getElementById("errore").innerHTML="";
+            document.getElementById("errore").innerHTML="<div class='alert alert-success'><h4><b>Grazie!</b> Testo Inserito correttamente!</h4></div>";
             setTimeout(function(){ location.href = "index.jsp"; },5000);
         }
     }    
