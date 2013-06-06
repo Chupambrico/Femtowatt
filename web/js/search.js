@@ -45,7 +45,7 @@ function nPagineOut(){
 }
 
 function cercaOut(){
-    document.getElementById('errore').style = "width: " + (xmlhttp.readyState * 25) + "%;";
+    document.getElementById("loadBar").style.width = (xmlhttp.readyState * 25) + "%";
     if (xmlhttp.readyState==4){
         var stringa= xmlhttp.responseText.trim();
         /*var Re = new RegExp("%0D%0A","g");
