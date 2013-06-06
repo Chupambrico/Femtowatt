@@ -46,6 +46,7 @@ function nPagineOutA(){
 }
 
 function cercaOutA(){
+    document.getElementById('errore').style = "width: " + (xmlhttp.readyState * 25) + "%;";
     if (xmlhttp.readyState==4){
         var stringa= xmlhttp.responseText.trim();
         /*var Re = new RegExp("%0D%0A","g");
@@ -73,7 +74,7 @@ function avvioA(valore){
 function cercaA(valore,disabilitare){
    
     xmlhttp=GetXmlHttpObject();
-    document.getElementById('rA').innerHTML = "<img src='img/ajax-loader.gif'/>";
+    document.getElementById('rA').innerHTML = "<div class=\"progress progress-striped active\"><div class=\"bar\" style=\"width: 0%;\" id=\"loadBar\"></div></div>";
     if (xmlhttp==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
