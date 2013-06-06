@@ -6,9 +6,9 @@
     <div class="modal-body">
         <form class="form-horizontal" name="loginform">
             <div class="control-group">
-                <label class="control-label" for="inputEmail">Email</label>
+                <label class="control-label" for="inputEmail">Username</label>
                 <div class="controls">
-                    <input type="text" id="inputEmail" placeholder="Email" name="loginemail">
+                    <input type="text" id="inputEmail" placeholder="Username" name="loginemail">
                 </div>
             </div>
             <div class="control-group">
@@ -20,20 +20,20 @@
             <div class="control-group">
                 <div class="controls">
                     <label class="checkbox">
-                        <input type="checkbox"> Remember me
+                        <input type="checkbox">Ricordami
                     </label>
-                    <button class="btn btn-primary" type="button" name="loginbtn" onclick="login();">Sign in</button>
+                    <button class="btn btn-primary" type="button" name="loginbtn" onclick="login();">Entra!</button>
                 </div>
             </div>
         </form>
         <div class="alert alert-error hidden" id="loginError">
             <button class="close" type="button" onclick="closePopError();">×</button>
-            <strong>Oh snap!</strong>
+            <strong>Errore!</strong>
             <p id="errorMessage">Change a few things up and try submitting again.</p>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-link">Not yet registered?</button>
-        <button type="button" class="btn">Register</button>
+        <button type="button" class="btn btn-link">Non sei ancora registrato?</button>
+        <a  class="btn" href="index.jsp?pag=register" >Registrati</a>
     </div>
 </div>

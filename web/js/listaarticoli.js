@@ -50,7 +50,7 @@ function inviaRisultati(){
         return;
     }
     
-    url="elimina.jsp?";
+    url="eliminaPagina.jsp?";
     url=url+valori;
     
     xmlhttp2.onreadystatechange = reloadOnState4;

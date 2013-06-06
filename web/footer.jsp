@@ -1,11 +1,12 @@
 <footer class="footer">
     <div class="container">
         <p>
-            Designed and built by
-            <a target="_blank" href="#">Chupa</a>
-            and
-            <a target="_blank" href="#">Rocky</a>
+            Ideato e costruito da
+            <a target="_blank" href="index.jsp?pag=profile&cod=0">Micheli Enrico </a>
+            &
+            <a target="_blank" href="index.jsp?pag=profile&cod=2">Roccabruna Gabriel</a>
             .
+           
         </p>
         <p>
             <a href="#">Glyphicons Free</a>
@@ -13,17 +14,20 @@
             <a href="#">CC BY 3.0</a>
             .
         </p>
+        <p>
+         &copy; Copyright 2012-2013.
+        </p>   
         <ul class="footer-links">
             <li>
-                <a href="#">A</a>
+                <a href="#"></a>
             </li>
             <li class="muted">·</li>
             <li>
-                <a href="#">B</a>
+                <a href="#"></a>
             </li>
             <li class="muted">·</li>
             <li>
-                <a href="#">C</a>
+                <a href="#"></a>
             </li>
         </ul>
     </div>

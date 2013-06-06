@@ -8,6 +8,8 @@ function login(){
         return;
     }
     var url="login.jsp?";
+   pass= hex_md5(pass);
+   // document.write(pass);
     url = url + "u=" + user + "&p=" + pass;
     xmlhttp.onreadystatechange = navLogin;
     xmlhttp.open("GET",url,true);

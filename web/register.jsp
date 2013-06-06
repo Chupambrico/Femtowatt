@@ -1,3 +1,4 @@
+<script src="js/md5.js"></script>
 <script src="js/register.js"></script>
 <script>  
     $(function () {
@@ -88,7 +89,19 @@
                                 <div id="confPassEs" data-animation="true" data-title="Errore!" data-content="Password di conferma diversa dalla password.">
                                     <input type="password" name="confermaPassword" onChange="confermaPassword1();" placeholder="Conferma Password" class="input-xlarge">
                                 </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="control-group">
+                            <label class="control-label"></label>
+                            <div class="controls">
+                                <div data-animation="true">
+                                    Testo<a href="#consensoModal" role="button" data-toggle="modal">Consenso</a>
                                 </div>
+                            </div>
                         </div>
                     </td>
                 </tr>
@@ -99,4 +112,5 @@
             </div>
         </div>
     </form>
+<%@include file="consensoModal.jsp"%>
 </div>

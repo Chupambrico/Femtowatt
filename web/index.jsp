@@ -13,6 +13,7 @@ String visualPagina = pagina;
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.css" rel="stylesheet" media="screen">
         <link href="css/project.css" rel="stylesheet" media="screen">
+        <script src="js/md5.js"></script>
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/search.js"></script>
@@ -35,6 +36,8 @@ String visualPagina = pagina;
                         <h1 id="title"><%=visualPagina%></h1>
                     </div>
                     <div>
+                        <div id="r" class="">
+                        </div>
                         <div id="lista">
                             <%
                             try{

@@ -15,7 +15,9 @@ rs = q.esecuzioneQuery("SELECT *" +
                            "WHERE \"PAGINA\".\"IDUTENTE\" = \"UTENTE\".\"ID\"" + 
                            "AND \"PAGINA\".\"ID\" = " + ids);
 String argomento="";
+Integer idu=0;
 while (rs.next()){
+    idu=rs.getInt("IDUTENTE");
     argomento=rs.getString("ARGOMENTO");
     titolo = rs.getString("TITOLO");
     autore = rs.getString("USERNAME");            
@@ -30,7 +32,7 @@ if(autore.equals(nome)){
 }
 out.print("<div id='avvisi'></div>");                   
 out.print("<b><h2 id='headings'> " + titolo + "</h2></b><br>");
-out.print("Autore : <b>" + autore + "</b><br>");
+out.print("Autore :<a href='index.jsp?pag=profile&cod="+idu+"'> <b>" + autore + "</b></a><br>");
 out.print("<div id='arg'>Argomento : <b id='a'>" + argomento + "</b></div><br>");
 out.print("<div id='testo' class=''><br>" + testo + "</div>");
 out.print("<input id='cod' type='hidden' value='" + id + "' >");

@@ -13,17 +13,21 @@ int i = 0;
     Integer idu=0,qer=0;
     
     if((autore1!="")&&(autore1 != null)){
+         autore1 = autore1.replaceAll("'","''");
     richiesta+=" LOWER(\"UTENTE\".USERNAME)LIKE LOWER('%"+autore1+"%')";
     } 
     
     if(argomento1!=""&&(argomento1 != null)){
     if(richiesta!= ""){richiesta+="AND";}
+     argomento1 = argomento1.replaceAll("'","''");
          richiesta+=" LOWER(\"PAGINA\".ARGOMENTO)LIKE LOWER('%"+argomento1+"%')";
     } 
     
    if((titolo1!="")&&(titolo1 != null)){
     if(richiesta!= ""){richiesta+="AND";}
+     titolo1 = titolo1.replaceAll("'","''");
         richiesta+=" LOWER(\"PAGINA\".TITOLO)LIKE LOWER('%"+titolo1+"%')";
+         
     } 
       
 
@@ -33,7 +37,7 @@ int i = 0;
   
     
     if(richiesta!=""){
-    richiesta = richiesta.replaceAll("'","''"); 
+   
     rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\" AND "+richiesta+"  ORDER BY TITOLO ");
      }else{  rs = q.esecuzioneQuery("SELECT * FROM \"PAGINA\",\"UTENTE\" WHERE \"PAGINA\".\"IDUTENTE\"=\"UTENTE\".\"ID\"  ORDER BY TITOLO ");}
     

@@ -15,7 +15,7 @@
                 try{
                     if(session.getAttribute("livello").equals(10)){
                         %>
-                        <li<%if((session.getAttribute("page").equals("administrator"))||(session.getAttribute("page").equals("listautenti"))||(session.getAttribute("page").equals("listaarticoli"))){
+                        <li<%if(session.getAttribute("page").equals("administrator")){
                             %> class="active"<%
                         }%>><a href="index.jsp?pag=administrator">Amministrazione</a></li>
                         <%
@@ -28,7 +28,7 @@
                     %>
                     <li id="register"<%if(session.getAttribute("page").equals("register")){
                         %> class="active"<%
-                    }%>><a href="index.jsp?pag=register">Register</a></li>
+                    }%>><a href="index.jsp?pag=register">Registrazione</a></li>
                     <li id="login"><a href="#myModal" role="button" data-toggle="modal">Login</a></li>
                     <li id="user" style="display:none;"><a href="index.jsp?pag=profile" id="userN"></a></li>
                     <li id="logout" style="display:none;" onclick="logout();"><a href="#">Logout</a></li>
@@ -40,7 +40,7 @@
                     %>
                     <li id="register" style="display:none;"<%if(session.getAttribute("page").equals("register")){
                         %> class="active"<%
-                    }%>><a href="index.jsp?pag=register">Register</a></li>
+                    }%>><a href="index.jsp?pag=register">Registrazione</a></li>
                     <li id="login" style="display:none;"><a href="#myModal" role="button" data-toggle="modal">Login</a></li>
                     <li id="user"<%Boolean a = false;
                         try{a = Integer.parseInt(request.getParameter("cod")) == id;}catch(Exception e){}

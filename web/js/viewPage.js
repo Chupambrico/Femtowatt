@@ -151,7 +151,7 @@ function mod(){
         case "Sistemi":
             s7 = " selected";
             break;
-        case "Stetistica":
+        case "Statistica":
             s8 = " selected";
             break;
     }

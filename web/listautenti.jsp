@@ -3,9 +3,8 @@
 <%@include file="schede.html" %>
 <script src="js/listautenti.js"></script>
 <%  
-String nome, cognome, ban;
-String bannato = ""; 
-Integer id;
+String nome, cognome;
+Integer id, lvl;
 Integer i = 0;
 rs = q.esecuzioneQuery("SELECT * FROM \"UTENTE\" ORDER BY \"NOME\"");
 out.print("<table>");   
@@ -14,14 +13,9 @@ while(rs.next()){
     i++;
     nome = rs.getString("NOME");           
     cognome = rs.getString("COGNOME");
-    ban = rs.getString("BAN");
-    try{
-        if(ban.equals("on")){
-            bannato = " btn-danger active";
-        }
-    }catch(Exception e){}
+    lvl = rs.getInt("LIVELLO");
     id = rs.getInt("ID");
-    String l = "s" + rs.getInt("LIVELLO");
+    String l = "s" + lvl;
     session.setAttribute(l, "selected");
     out.print("<tr>"
                 + "<td>"
@@ -34,6 +28,7 @@ while(rs.next()){
                 + "<td class='span1'></td>"
                 + "<td>"
                     + "<select id='lvl" + i + "' name='" + rs.getInt("ID") + "' class='span1'>"
+                        + "<option value='0'" + session.getAttribute("s0") + ">0</option>"
                         + "<option value='1'" + session.getAttribute("s1") + ">1</option>"
                         + "<option value='2'" + session.getAttribute("s2") + ">2</option>"
                         + "<option value='3'" + session.getAttribute("s3") + ">3</option>"
@@ -48,7 +43,14 @@ while(rs.next()){
                 + "</td>"
                 + "<td class='span1'></td>"
                 + "<td>"
-                    + "<button type='button' class='btn" + bannato + "' id=\"" + i + "\" value=" + id + " onclick='ban(\"" + i + "\");'>Elimina</button>"
+                    + "<div class='btn-group'>"
+                        + "<button type='button' class='btn' id=\"" + i + "\" value=" + id + " onclick='ban(\"" + i + "\");'>Elimina</button>");
+    try{
+        if(lvl == 0){
+            out.print("<button type='button' class='btn btn-warning' disabled>Utente bannato</button>");
+        }
+    }catch(Exception e){}
+    out.print("</div>"
                 + "</td>"
             + "</tr>");
     session.removeAttribute(l);

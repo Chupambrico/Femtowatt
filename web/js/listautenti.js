@@ -3,16 +3,11 @@ function inviaRisultati(){
     var valori="",stato="",valore="";
 
     for(var i = 1; i <= tot; i++){
-        stato=document.getElementById(i).className;
-        if(stato=="btn"){
-            valore="off";
-        }else{
-            valore="on";
-        }
+        valore=document.getElementById("lvl" + i).value;
         if(valori == ""){
-            valori=document.getElementById(i).value+"="+valore;
+            valori=document.getElementById("lvl" + i).name+"="+valore;
         }else{
-            valori=valori +"&"+document.getElementById(i).value+"="+valore;
+            valori=valori +"&"+document.getElementById("lvl" + i).name+"="+valore;
         }
     }
     
@@ -22,21 +17,25 @@ function inviaRisultati(){
         return;
     }
     
-    url="banna.jsp?";
+    url="livello.jsp?";
     url=url+valori;
     
     xmlhttp.onreadystatechange = reloadOnState4;
     xmlhttp.open("GET",url,true);
     xmlhttp.send(null);
     
-    var valori="",stato="",valore="";
-
+    valori="";
+    stato="";
+    valore="";
     for(var i = 1; i <= tot; i++){
-        valore=document.getElementById("lvl" + i).value;
-        if(valori == ""){
-            valori=document.getElementById("lvl" + i).name+"="+valore;
-        }else{
-            valori=valori +"&"+document.getElementById("lvl" + i).name+"="+valore;
+        stato=document.getElementById(i).className;
+        if(stato!="btn"){
+            valore="on";
+            if(valori == ""){
+                valori=document.getElementById(i).value+"="+valore;
+            }else{
+                valori=valori +"&"+document.getElementById(i).value+"="+valore;
+            }
         }
     }
     
@@ -46,7 +45,7 @@ function inviaRisultati(){
         return;
     }
     
-    url="livello.jsp?";
+    url="eliminaUtente.jsp?";
     url=url+valori;
     
     xmlhttp2.onreadystatechange = reloadOnState4;

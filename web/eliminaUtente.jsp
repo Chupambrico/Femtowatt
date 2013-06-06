@@ -3,9 +3,8 @@
 <%
 Enumeration parametri = request.getParameterNames();
 while(parametri.hasMoreElements()){
-    String nome = (String) parametri.nextElement(); 
-    String valore = request.getParameter(nome); 
+    String nome = (String) parametri.nextElement();  
     Integer id = Integer.parseInt(nome);
-    q.esecuzioneUpdate("UPDATE \"UTENTE\" SET \"BAN\"='" + valore + "' WHERE ID='" + id + "'");
+    q.esecuzioneUpdate("DELETE FROM \"UTENTE\" WHERE \"ID\"=" + id);
 }
 %>
