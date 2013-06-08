@@ -20,10 +20,13 @@ String visualPagina = pagina;
         <script src="js/login.js"></script>
         <script src="js/logout.js"></script>
         <script src="js/home.js"></script>
+        <script language="javascript">
+            window.onload = lista();
+        </script>
         <title>JSP Page</title>
         <%@include file="titles.jsp"%>
     </head>
-    <body onload="lista();">
+    <body>
         <%@include file="navbar.jsp"%>
 	<%@include file="header.jsp"%>
         <div class="container">

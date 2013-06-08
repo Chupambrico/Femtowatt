@@ -1,26 +1,26 @@
+var xmlhttpAnte;
 function anteprimaOut(){
-    document.getElementById("loadBar").style.width = (xmlhttp.readyState * 25) + "%";
-    if (xmlhttp.readyState==4){
+    document.getElementById("loadBar").style.width = (xmlhttpAnte.readyState * 25) + "%";
+    if (xmlhttpAnte.readyState==4){
         setTimeout(function(){document.getElementById("r").innerHTML="";},1000);
-        var stringa = xmlhttp.responseText.trim();
+        var stringa = xmlhttpAnte.responseText.trim();
         document.getElementById("lista").innerHTML=stringa;
-        lista();
     }
 }
 
 function anteprima(){
     document.getElementById("r").innerHTML="<div class=\"progress progress-striped active\"><div class=\"bar\" style=\"width: 0%;\" id=\"loadBar\"></div></div>";
-    xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
+    xmlhttpAnte=GetXmlHttpObject();
+    if (xmlhttpAnte==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
 
     var url="top10.jsp";
 
-    xmlhttp.onreadystatechange=anteprimaOut;
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send(null);
+    xmlhttpAnte.onreadystatechange=anteprimaOut;
+    xmlhttpAnte.open("GET",url,true);
+    xmlhttpAnte.send(null);
 }
     
 function search1(){

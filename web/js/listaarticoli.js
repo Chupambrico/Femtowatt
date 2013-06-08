@@ -1,3 +1,4 @@
+var xmlhttpInviaA, xmlhttpInviaA2;
 function inviaRisultati(){
     var tot =document.getElementById("i").value;
     var valori="",stato="",valore="";
@@ -16,8 +17,8 @@ function inviaRisultati(){
         }
     }
 
-    xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
+    xmlhttpInviaA=GetXmlHttpObject();
+    if (xmlhttpInviaA==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
@@ -25,9 +26,9 @@ function inviaRisultati(){
     var url="convalida.jsp?";
     url=url+valori;
     
-    xmlhttp.onreadystatechange = reloadOnState4;
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send(null);
+    xmlhttpInviaA.onreadystatechange = reloadOnState4;
+    xmlhttpInviaA.open("GET",url,true);
+    xmlhttpInviaA.send(null);
     
     valori="";
     stato="";
@@ -44,8 +45,8 @@ function inviaRisultati(){
         }
     }
     
-    xmlhttp2=GetXmlHttpObject();
-    if (xmlhttp2==null){
+    xmlhttpInviaA2=GetXmlHttpObject();
+    if (xmlhttpInviaA2==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
@@ -53,13 +54,13 @@ function inviaRisultati(){
     url="eliminaPagina.jsp?";
     url=url+valori;
     
-    xmlhttp2.onreadystatechange = reloadOnState4;
-    xmlhttp2.open("GET",url,true);
-    xmlhttp2.send(null);
+    xmlhttpInviaA2.onreadystatechange = reloadOnState4;
+    xmlhttpInviaA2.open("GET",url,true);
+    xmlhttpInviaA2.send(null);
 }
 
 function reloadOnState4(){
-    if ((xmlhttp.readyState==4)&&(xmlhttp.readyState==4)){
+    if ((xmlhttpInviaA.readyState==4)&&(xmlhttpInviaA2.readyState==4)){
         window.location.reload();
     }
 }

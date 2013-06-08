@@ -1,25 +1,26 @@
 var i=0;
-var xmlhttp,nPagine;
+var xmlhttpNPag, xmlhttpCerca, xmlhttpLista;
+var nPagine;
 var nomeSpecial,bottoneDisabled;
 var unaSola,pagina,errS;
 
 function nPagina(){
-    xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
+    xmlhttpNPag=GetXmlHttpObject();
+    if (xmlhttpNPag==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
     var url="contaElementi.jsp";
     url=url+"?alfa="+encodeURIComponent(nomeSpecial).replace(/'/g,"%27").replace(/"/g,"%22");
-    xmlhttp.onreadystatechange=nPagineOut;
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send(null);
+    xmlhttpNPag.onreadystatechange=nPagineOut;
+    xmlhttpNPag.open("GET",url,true);
+    xmlhttpNPag.send(null);
 }
 
 function nPagineOut(){
-    if (xmlhttp.readyState==4){
+    if (xmlhttpNPag.readyState==4){
         var selectPages="";
-        var stringa= xmlhttp.responseText.trim();
+        var stringa= xmlhttpNPag.responseText.trim();
         var Re = new RegExp("%0D%0A","g");
         stringa = stringa.replace(Re,"");
         nPagine=stringa;
@@ -45,10 +46,10 @@ function nPagineOut(){
 }
 
 function cercaOut(){
-    document.getElementById("loadBar").style.width = (xmlhttp.readyState * 25) + "%";
-    if (xmlhttp.readyState==4){
+    document.getElementById("loadBar").style.width = (xmlhttpCerca.readyState * 25) + "%";
+    if (xmlhttpCerca.readyState==4){
         setTimeout(function(){document.getElementById("r").innerHTML="";},750);
-        var stringa= xmlhttp.responseText.trim();
+        var stringa= xmlhttpCerca.responseText.trim();
         /*var Re = new RegExp("%0D%0A","g");
         stringa = stringa.replace(Re,"");*/
         document.getElementById('lista').innerHTML = stringa;
@@ -71,9 +72,9 @@ function avvio(valore){
 }
 
 function cerca1(valore,disabilitare){
-    xmlhttp=GetXmlHttpObject();
+    xmlhttpCerca=GetXmlHttpObject();
     document.getElementById('r').innerHTML = "<div class=\"progress progress-striped active\"><div class=\"bar\" style=\"width: 0%;\" id=\"loadBar\"></div></div>";
-    if (xmlhttp==null){
+    if (xmlhttpCerca==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
@@ -84,16 +85,16 @@ function cerca1(valore,disabilitare){
     }
     var url="like.jsp?";
     url=url+"alfa="+encodeURIComponent(nomeSpecial).replace(/'/g,"%27").replace(/"/g,"%22")+"&nElementi="+valore;
-    xmlhttp.onreadystatechange=cercaOut;
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send(null);
+    xmlhttpCerca.onreadystatechange=cercaOut;
+    xmlhttpCerca.open("GET",url,true);
+    xmlhttpCerca.send(null);
 }
 //-------------End--Cerca-------------------//
 //-------------Lista------------------------//
 
 function risultato(){
-    if (xmlhttp.readyState==4){
-        var stringa= xmlhttp.responseText.trim();
+    if (xmlhttpLista.readyState==4){
+        var stringa= xmlhttpLista.responseText.trim();
         var Re = new RegExp("%0D%0A","g");
         stringa = stringa.replace(Re,"");
         var n=stringa.split("/");
@@ -102,16 +103,16 @@ function risultato(){
 }
 
 function lista(){
-    xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
+    xmlhttpLista=GetXmlHttpObject();
+    if (xmlhttpLista==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
     var url="tutto.jsp";
     url=url;
-    xmlhttp.onreadystatechange=risultato;
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send(null);
+    xmlhttpLista.onreadystatechange=risultato;
+    xmlhttpLista.open("GET",url,true);
+    xmlhttpLista.send(null);
 }
 //-------------END--Lista------------------------//     
 

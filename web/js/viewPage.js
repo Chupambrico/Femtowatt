@@ -2,6 +2,7 @@ var errTitolo="1";
 var titolo="";
 var errAngomento="1";
 var arg="";
+var xmlhttpTesto, xmlhttpDel;
 
 function titolo1(){
     var stringa = document.getElementById("headings").innerHTML;;
@@ -33,8 +34,8 @@ function controlA(){
 }
 
 function testout(){
-    if (xmlhttp.readyState==4){
-        var stringa= xmlhttp.responseText.trim();
+    if (xmlhttpTesto.readyState==4){
+        var stringa= xmlhttpTesto.responseText.trim();
         var Re = new RegExp("%0D%0A","g");
         stringa = stringa.replace(Re,"");
         
@@ -56,8 +57,8 @@ function testo1(){
     var stringa = document.getElementById("testo").innerHTML;;
    
     
-    xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
+    xmlhttpTesto=GetXmlHttpObject();
+    if (xmlhttpTesto==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
@@ -66,11 +67,11 @@ function testo1(){
     var url="insertPage.jsp";
     var param = "titolo="+titolo+"&testo="+encodeURIComponent(stringa).replace(/'/g,"%27").replace(/"/g,"%22")+"&argomento="+arg+"&mod="+a+"&cod="+id;
      
-    xmlhttp.onreadystatechange=testout;
+    xmlhttpTesto.onreadystatechange=testout;
     
-    xmlhttp.open("POST",url,true);
-    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xmlhttp.send(param);
+    xmlhttpTesto.open("POST",url,true);
+    xmlhttpTesto.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttpTesto.send(param);
     }else{
         document.getElementById("avvisi").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Titolo e argomento sono errati o assenti!</h4></div>"
     }
@@ -94,8 +95,8 @@ function del(){
     var id=0;
     id=document.getElementById("cod").value;
     
-    xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
+    xmlhttpDel=GetXmlHttpObject();
+    if (xmlhttpDel==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
@@ -103,13 +104,13 @@ function del(){
     var url="deletePage.jsp?";
     url=url+"cod="+id;
 
-    xmlhttp.onreadystatechange=home;
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send(null);
+    xmlhttpDel.onreadystatechange=home;
+    xmlhttpDel.open("GET",url,true);
+    xmlhttpDel.send(null);
 }
 
 function home(){
-    if (xmlhttp.readyState==4){
+    if (xmlhttpDel.readyState==4){
         location.href = "index.jsp";
     }
 }

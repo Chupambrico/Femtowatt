@@ -1,3 +1,4 @@
+var xmlhttpTesto;
 function titolo1(){
     var stringa = document.scrivi.titolo.value;
 
@@ -31,8 +32,8 @@ function controlA(){
 
 
 function testout(){
-    if (xmlhttp.readyState==4){
-        var stringa= xmlhttp.responseText.trim();
+    if (xmlhttpTesto.readyState==4){
+        var stringa= xmlhttpTesto.responseText.trim();
         var Re = new RegExp("%0D%0A","g");
         stringa = stringa.replace(Re,"");
         
@@ -57,8 +58,8 @@ function testo1(){
 
    
     
-    xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
+    xmlhttpTesto=GetXmlHttpObject();
+    if (xmlhttpTesto==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
@@ -66,11 +67,11 @@ function testo1(){
     var url="insertPage.jsp";
     var param ="titolo="+titolo+"&testo="+encodeURIComponent(stringa).replace(/'/g,"%27").replace(/"/g,"%22")+"&argomento="+arg+"&mod="+0;
      
-    xmlhttp.onreadystatechange=testout;
+    xmlhttpTesto.onreadystatechange=testout;
     
-    xmlhttp.open("POST",url,true);
-    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xmlhttp.send(param);
+    xmlhttpTesto.open("POST",url,true);
+    xmlhttpTesto.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttpTesto.send(param);
     }else{
         document.getElementById("errore").innerHTML="<div class='alert alert-error'><h4><b>Attenzione!</b> Titolo o argomento sono errati o assenti!</h4></div>"
     }

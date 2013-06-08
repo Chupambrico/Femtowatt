@@ -1,25 +1,25 @@
 var titolo="",arg="",utente="",errTitolo="0",errUtente="0";
-     var val="";
-     var i=0;
-
+var xmlhttpNPagA, xmlhttpCercaA;
+var val="";
+var i=0;
 
 function nPaginaA(){
-    xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
+    xmlhttpNPagA=GetXmlHttpObject();
+    if (xmlhttpNPagA==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
     var url="contaElementiA.jsp?";
     url=url+"titolo="+encodeURIComponent(titolo).replace(/'/g,"%27").replace(/"/g,"%22")+"&argomento="+encodeURIComponent(arg).replace(/'/g,"%27").replace(/"/g,"%22")+"&autore="+encodeURIComponent(utente).replace(/'/g,"%27").replace(/"/g,"%22");
-    xmlhttp.onreadystatechange=nPagineOutA;
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send(null);
+    xmlhttpNPagA.onreadystatechange=nPagineOutA;
+    xmlhttpNPagA.open("GET",url,true);
+    xmlhttpNPagA.send(null);
 }
 
 function nPagineOutA(){
-    if (xmlhttp.readyState==4){
+    if (xmlhttpNPagA.readyState==4){
         var selectPages="";
-        var stringa= xmlhttp.responseText.trim();
+        var stringa= xmlhttpNPagA.responseText.trim();
         var Re = new RegExp("%0D%0A","g");
         stringa = stringa.replace(Re,"");
         nPagine=stringa;
@@ -45,10 +45,10 @@ function nPagineOutA(){
 }
 
 function cercaOutA(){
-    document.getElementById("loadBar").style.width = (xmlhttp.readyState * 25) + "%";
-    if (xmlhttp.readyState==4){
+    document.getElementById("loadBar").style.width = (xmlhttpCercaA.readyState * 25) + "%";
+    if (xmlhttpCercaA.readyState==4){
         setTimeout(function(){document.getElementById("r").innerHTML="";},1000);
-        var stringa= xmlhttp.responseText.trim();
+        var stringa= xmlhttpCercaA.responseText.trim();
         /*var Re = new RegExp("%0D%0A","g");
         stringa = stringa.replace(Re,"");*/
         document.getElementById('rA').innerHTML = stringa;
@@ -73,9 +73,9 @@ function avvioA(valore){
 
 function cercaA(valore,disabilitare){
    
-    xmlhttp=GetXmlHttpObject();
+    xmlhttpCercaA=GetXmlHttpObject();
     document.getElementById('r').innerHTML = "<div class=\"progress progress-striped active\"><div class=\"bar\" style=\"width: 0%;\" id=\"loadBar\"></div></div>";
-    if (xmlhttp==null){
+    if (xmlhttpCercaA==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
@@ -86,9 +86,9 @@ function cercaA(valore,disabilitare){
     }
     var url="ricercaAvanzata.jsp?";
     url=url+"titolo="+encodeURIComponent(titolo).replace(/'/g,"%27").replace(/"/g,"%22")+"&nElementi="+valore+"&argomento="+encodeURIComponent(arg).replace(/'/g,"%27").replace(/"/g,"%22")+"&autore="+encodeURIComponent(utente).replace(/'/g,"%27").replace(/"/g,"%22");
-    xmlhttp.onreadystatechange=cercaOutA;
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send(null);
+    xmlhttpCercaA.onreadystatechange=cercaOutA;
+    xmlhttpCercaA.open("GET",url,true);
+    xmlhttpCercaA.send(null);
 }    
 
 //-----------------------------------------------------------------

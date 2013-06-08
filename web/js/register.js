@@ -1,39 +1,10 @@
 var i=0;
-var xmlhttp;
+var xmlhttpUt, xmlhttpFin;
 var errNome,errCognome,errUtente,errPassword,errConfermaPassword,errEmail,errData;
 
-function risultato(){
-    if (xmlhttp.readyState==4){
-        var stringa= xmlhttp.responseText.trim();
-
-        var Re = new RegExp("%0D%0A","g");
-        stringa = stringa.replace(Re,"");
-        var n=stringa.split("/");
-         $('#search').typeahead({source: n});
-    }
-}
-
-function lista(){
-    xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
-        alert ("Your browser does not support Ajax HTTP");
-        return;
-    }
-    var str = document.modulo_form.utente.value;
-
-    var url="tutto.jsp";
-    url=url;
-
-    xmlhttp.onreadystatechange=risultato;
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send(null);
-}
-
-//------------------------------------------      
-
 function getOutput(){
-    if (xmlhttp.readyState==4){
-        var stringa= xmlhttp.responseText.trim();
+    if (xmlhttpUt.readyState==4){
+        var stringa= xmlhttpUt.responseText.trim();
 
         var Re = new RegExp("%0D%0A","g");
         stringa = stringa.replace(Re,"");
@@ -47,16 +18,6 @@ function getOutput(){
             document.getElementById("ak5").className="control-group success";
             errUtente="0";}
     }
-}
-
-function GetXmlHttpObject(){
-    if (window.XMLHttpRequest){
-        return new XMLHttpRequest();
-    }
-    if (window.ActiveXObject){
-        return new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    return null;
 }
 
 function nome1(){
@@ -92,8 +53,7 @@ function cognome1(){
 //Problem!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! on date!
 function data1(){
     var stringa = document.modulo_form.dataDiN.value;
-    var regexp = /^[0-1][0-9]\/([0-2][0-9])|([3][0-1])\/[0-9][0-9][0-9][0-9]$/;
-
+    var regexp = /^(([0-2][1-9])|([3][0-1]))\/(([0][1-9])|([1][0-2]))\/[0-9][0-9][0-9][0-9]$/;
     if(regexp.test(stringa) == false){
         document.getElementById("ak3").className="control-group error";
         $('#dataEs').popover('show');
@@ -106,9 +66,9 @@ function data1(){
 }
 
 function utente1(){
-    xmlhttp=GetXmlHttpObject();
+    xmlhttpUt=GetXmlHttpObject();
 
-    if (xmlhttp==null){
+    if (xmlhttpUt==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
@@ -121,9 +81,9 @@ function utente1(){
         var url="checkUser.jsp";
         url=url+"?alfa="+str;
 
-        xmlhttp.onreadystatechange=getOutput;
-        xmlhttp.open("GET",url,true);
-        xmlhttp.send(null);
+        xmlhttpUt.onreadystatechange=getOutput;
+        xmlhttpUt.open("GET",url,true);
+        xmlhttpUt.send(null);
     }
 }
 
@@ -171,8 +131,8 @@ function confermaPassword1(){
 }
 
 function finale(){  
-    var xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
+    var xmlhttpFin=GetXmlHttpObject();
+    if (xmlhttpFin==null){
         alert ("Your browser does not support Ajax HTTP");
         return;
     }
@@ -209,9 +169,9 @@ function finale(){
             var url="registra.jsp";
            var  param= "nome="+nome+"&cognome="+cognome+"&dataDiN="+dataDiN+"&utente="+utente+"&password="+password+"&email="+email;
 
-           xmlhttp.open("POST",url,true);
-           xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-           xmlhttp.send(param); 
+           xmlhttpFin.open("POST",url,true);
+           xmlhttpFin.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+           xmlhttpFin.send(param); 
 
             document.getElementById("errore").innerHTML="<div class='alert alert-succes'><h4><b>Good!</b> Registrazione Effettuata!</h4></div>"
             setTimeout(function  a(){location.href="index.jsp";},3000);

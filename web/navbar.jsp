@@ -15,7 +15,7 @@
                 try{
                     if(session.getAttribute("livello").equals(10)){
                         %>
-                        <li<%if(session.getAttribute("page").equals("administrator")){
+                        <li<%if((session.getAttribute("page").equals("administrator"))||(session.getAttribute("page").equals("listautenti"))||(session.getAttribute("page").equals("listaarticoli"))){
                             %> class="active"<%
                         }%>><a href="index.jsp?pag=administrator">Amministrazione</a></li>
                         <%
